@@ -1,0 +1,8 @@
+/.phpunit.cache
+/node_modules
+/.fleet
+/.idea
+/.vscode
+*.zip
+*.rar
+*.ios

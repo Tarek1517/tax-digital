@@ -1,0 +1,615 @@
+{
+  "_GuestLayout-NBHUvr7I.js": {
+    "file": "assets/GuestLayout-NBHUvr7I.js",
+    "name": "GuestLayout",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_Modal-Cw_anYlU.js": {
+    "file": "assets/Modal-Cw_anYlU.js",
+    "name": "Modal",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_SummernoteEditor-D_vcoR3o.js": {
+    "file": "assets/SummernoteEditor-D_vcoR3o.js",
+    "name": "SummernoteEditor",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_thumbs-!~{00q}~.js": {
+    "file": "assets/thumbs-D2YEmgvT.css",
+    "src": "_thumbs-!~{00q}~.js"
+  },
+  "_thumbs-CsNyTZ2y.js": {
+    "file": "assets/thumbs-CsNyTZ2y.js",
+    "name": "thumbs",
+    "imports": [
+      "resources/js/app.js"
+    ],
+    "css": [
+      "assets/thumbs-D2YEmgvT.css"
+    ]
+  },
+  "node_modules/summernote/dist/font/summernote.eot": {
+    "file": "assets/summernote-CIJFJttR.eot",
+    "src": "node_modules/summernote/dist/font/summernote.eot"
+  },
+  "node_modules/summernote/dist/font/summernote.ttf": {
+    "file": "assets/summernote-BFwDdmZ-.ttf",
+    "src": "node_modules/summernote/dist/font/summernote.ttf"
+  },
+  "node_modules/summernote/dist/font/summernote.woff": {
+    "file": "assets/summernote-BpukxMI1.woff",
+    "src": "node_modules/summernote/dist/font/summernote.woff"
+  },
+  "node_modules/summernote/dist/font/summernote.woff2": {
+    "file": "assets/summernote-CG9AQWUQ.woff2",
+    "src": "node_modules/summernote/dist/font/summernote.woff2"
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-CyK3pJ3D.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-0DwYB4Lr.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/pages/Frontend/Index.vue",
+      "resources/js/pages/Frontend/About.vue",
+      "resources/js/pages/Frontend/Services.vue",
+      "resources/js/pages/Frontend/Career.vue",
+      "resources/js/pages/Frontend/Contact.vue",
+      "resources/js/pages/Frontend/Work.vue",
+      "resources/js/pages/Frontend/InsideWork.vue",
+      "resources/js/pages/Dashboard/Auth/Login.vue",
+      "resources/js/pages/Dashboard/Index.vue",
+      "resources/js/pages/Dashboard/Projects/Index.vue",
+      "resources/js/pages/Dashboard/Projects/Category.vue",
+      "resources/js/pages/Dashboard/Projects/Create.vue",
+      "resources/js/pages/Dashboard/Projects/Edit.vue",
+      "resources/js/pages/Dashboard/Cms/Clients.vue",
+      "resources/js/pages/Dashboard/Cms/Contacts.vue",
+      "resources/js/pages/Dashboard/Cms/HeroSlider.vue",
+      "resources/js/pages/Dashboard/Cms/Team/Index.vue",
+      "resources/js/pages/Dashboard/Cms/Team/Create.vue",
+      "resources/js/pages/Dashboard/Cms/Pages/Index.vue",
+      "resources/js/pages/Dashboard/Cms/Pages/Create.vue",
+      "resources/js/pages/Dashboard/Cms/Pages/Edit.vue",
+      "resources/js/pages/Dashboard/Setting/Index.vue"
+    ],
+    "css": [
+      "assets/app-mBGQXbXT.css"
+    ],
+    "assets": [
+      "assets/DV-Logo-DFF05eaK.png",
+      "assets/summernote-CIJFJttR.eot",
+      "assets/summernote-CG9AQWUQ.woff2",
+      "assets/summernote-BpukxMI1.woff",
+      "assets/summernote-BFwDdmZ-.ttf"
+    ]
+  },
+  "resources/js/assets/images/DV_Header_Logo.png": {
+    "file": "assets/DV-Logo-DFF05eaK.png",
+    "src": "resources/js/assets/images/DV_Header_Logo.png"
+  },
+  "resources/js/assets/images/about-page.jpg": {
+    "file": "assets/about-page-B5swAhF9.jpg",
+    "src": "resources/js/assets/images/about-page.jpg"
+  },
+  "resources/js/assets/images/addition-logo/Amari hotel Logo.png": {
+    "file": "assets/Amari hotel Logo-BjjTtNJt.png",
+    "src": "resources/js/assets/images/addition-logo/Amari hotel Logo.png"
+  },
+  "resources/js/assets/images/addition-logo/BGB_Logo.png": {
+    "file": "assets/BGB_Logo-B8_NzWxW.png",
+    "src": "resources/js/assets/images/addition-logo/BGB_Logo.png"
+  },
+  "resources/js/assets/images/addition-logo/EPB logo.png": {
+    "file": "assets/EPB logo-CkBiM31Q.png",
+    "src": "resources/js/assets/images/addition-logo/EPB logo.png"
+  },
+  "resources/js/assets/images/addition-logo/GCCN logo.png": {
+    "file": "assets/GCCN logo-Be9LwH0h.png",
+    "src": "resources/js/assets/images/addition-logo/GCCN logo.png"
+  },
+  "resources/js/assets/images/addition-logo/SavetheChildren logo.png": {
+    "file": "assets/SavetheChildren logo-DBTZhRd5.png",
+    "src": "resources/js/assets/images/addition-logo/SavetheChildren logo.png"
+  },
+  "resources/js/assets/images/addition-logo/SquarePharmaLogo.png": {
+    "file": "assets/SquarePharmaLogo-CdIsWaMv.png",
+    "src": "resources/js/assets/images/addition-logo/SquarePharmaLogo.png"
+  },
+  "resources/js/assets/images/addition-logo/UNFPA_logo.png": {
+    "file": "assets/UNFPA_logo-Dc93uaYY.png",
+    "src": "resources/js/assets/images/addition-logo/UNFPA_logo.png"
+  },
+  "resources/js/assets/images/addition-logo/all community club logo.png": {
+    "file": "assets/all community club logo-AabpG7Wk.png",
+    "src": "resources/js/assets/images/addition-logo/all community club logo.png"
+  },
+  "resources/js/assets/images/addition-logo/bashundhora group logo.png": {
+    "file": "assets/bashundhora group logo-CE0hlH3B.png",
+    "src": "resources/js/assets/images/addition-logo/bashundhora group logo.png"
+  },
+  "resources/js/assets/images/addition-logo/classic group logo.png": {
+    "file": "assets/classic group logo-CPDMp2NY.png",
+    "src": "resources/js/assets/images/addition-logo/classic group logo.png"
+  },
+  "resources/js/assets/images/addition-logo/grameen telecom trust logo.jpg": {
+    "file": "assets/grameen telecom trust logo-D7n14Khj.jpg",
+    "src": "resources/js/assets/images/addition-logo/grameen telecom trust logo.jpg"
+  },
+  "resources/js/assets/images/addition-logo/gtcl logo.png": {
+    "file": "assets/gtcl logo-CbbwOq-l.png",
+    "src": "resources/js/assets/images/addition-logo/gtcl logo.png"
+  },
+  "resources/js/assets/images/addition-logo/mk electronics logo.png": {
+    "file": "assets/mk electronics logo-DjSX2bKh.png",
+    "src": "resources/js/assets/images/addition-logo/mk electronics logo.png"
+  },
+  "resources/js/assets/images/addition-logo/rangs properties ltd.png": {
+    "file": "assets/rangs properties ltd-CYty_Xhy.png",
+    "src": "resources/js/assets/images/addition-logo/rangs properties ltd.png"
+  },
+  "resources/js/assets/images/addition-logo/shahabuddin hospital logo.jpeg": {
+    "file": "assets/shahabuddin hospital logo-BeRtcriG.jpeg",
+    "src": "resources/js/assets/images/addition-logo/shahabuddin hospital logo.jpeg"
+  },
+  "resources/js/assets/images/addition-logo/tm textile logo.png": {
+    "file": "assets/tm textile logo-DbRripFY.png",
+    "src": "resources/js/assets/images/addition-logo/tm textile logo.png"
+  },
+  "resources/js/assets/images/addition-logo/united-group.png": {
+    "file": "assets/united-group-BhYQ831k.png",
+    "src": "resources/js/assets/images/addition-logo/united-group.png"
+  },
+  "resources/js/assets/images/addition-logo/well group logo.jpeg": {
+    "file": "assets/well group logo-DtLaNHyM.jpeg",
+    "src": "resources/js/assets/images/addition-logo/well group logo.jpeg"
+  },
+  "resources/js/assets/images/career.jpg": {
+    "file": "assets/career-Px11r7kk.jpg",
+    "src": "resources/js/assets/images/career.jpg"
+  },
+  "resources/js/assets/images/chairman madam.jpg": {
+    "file": "assets/chairman madam-JTR9UNaF.jpg",
+    "src": "resources/js/assets/images/chairman madam.jpg"
+  },
+  "resources/js/assets/images/client/DHL_Logo.svg.png": {
+    "file": "assets/DHL_Logo.svg-BOSoFLF5.png",
+    "src": "resources/js/assets/images/client/DHL_Logo.svg.png"
+  },
+  "resources/js/assets/images/client/Li_Fung_logo_logotype_emblem_symbol.png": {
+    "file": "assets/Li_Fung_logo_logotype_emblem_symbol-BJzpIo_o.png",
+    "src": "resources/js/assets/images/client/Li_Fung_logo_logotype_emblem_symbol.png"
+  },
+  "resources/js/assets/images/client/NEC_Corporation.max-600x480.png": {
+    "file": "assets/NEC_Corporation.max-600x480-P2jCrfUX.png",
+    "src": "resources/js/assets/images/client/NEC_Corporation.max-600x480.png"
+  },
+  "resources/js/assets/images/client/Singapore_Airlines_Logo_2.svg.png": {
+    "file": "assets/Singapore_Airlines_Logo_2.svg-C-iyexHy.png",
+    "src": "resources/js/assets/images/client/Singapore_Airlines_Logo_2.svg.png"
+  },
+  "resources/js/assets/images/client/The_Westin_Dhaka.png": {
+    "file": "assets/The_Westin_Dhaka-VF7RGNV1.png",
+    "src": "resources/js/assets/images/client/The_Westin_Dhaka.png"
+  },
+  "resources/js/assets/images/client/UNICEF_Logo.png": {
+    "file": "assets/UNICEF_Logo-DE88l4c_.png",
+    "src": "resources/js/assets/images/client/UNICEF_Logo.png"
+  },
+  "resources/js/assets/images/client/World_Vision_new_logo.png": {
+    "file": "assets/World_Vision_new_logo-zUbRcEK2.png",
+    "src": "resources/js/assets/images/client/World_Vision_new_logo.png"
+  },
+  "resources/js/assets/images/client/agrani bank logo.png": {
+    "file": "assets/agrani bank logo-TnrwzY2-.png",
+    "src": "resources/js/assets/images/client/agrani bank logo.png"
+  },
+  "resources/js/assets/images/client/dhaka-mass-transit-company-limited-dmtcl-logo-DA9F1D1088-seeklogo.com.png": {
+    "file": "assets/dhaka-mass-transit-company-limited-dmtcl-logo-DA9F1D1088-seeklogo.com-CWF31WIw.png",
+    "src": "resources/js/assets/images/client/dhaka-mass-transit-company-limited-dmtcl-logo-DA9F1D1088-seeklogo.com.png"
+  },
+  "resources/js/assets/images/client/ilo logo.png": {
+    "file": "assets/ilo logo-C3FTPQb2.png",
+    "src": "resources/js/assets/images/client/ilo logo.png"
+  },
+  "resources/js/assets/images/client/le-meridian-dhaka-logo.png": {
+    "file": "assets/le-meridian-dhaka-logo-_D56w5ZS.png",
+    "src": "resources/js/assets/images/client/le-meridian-dhaka-logo.png"
+  },
+  "resources/js/assets/images/client/logo-care.png": {
+    "file": "assets/logo-care-B33V5DOM.png",
+    "src": "resources/js/assets/images/client/logo-care.png"
+  },
+  "resources/js/assets/images/client/pubali bank-logo.png": {
+    "file": "assets/pubali bank-logo-CU5Owe-e.png",
+    "src": "resources/js/assets/images/client/pubali bank-logo.png"
+  },
+  "resources/js/assets/images/client/redisson blu.jpg": {
+    "file": "assets/redisson blu-BOLw2OGj.jpg",
+    "src": "resources/js/assets/images/client/redisson blu.jpg"
+  },
+  "resources/js/assets/images/client/sheltech logo.jpg": {
+    "file": "assets/sheltech logo-BsMAlXsc.jpg",
+    "src": "resources/js/assets/images/client/sheltech logo.jpg"
+  },
+  "resources/js/assets/images/client/ustc-logo.png": {
+    "file": "assets/ustc-logo-x-pqugJ8.png",
+    "src": "resources/js/assets/images/client/ustc-logo.png"
+  },
+  "resources/js/assets/images/client/wfp-logo-standard-blue-en.png": {
+    "file": "assets/wfp-logo-standard-blue-en-DY4r_WWd.png",
+    "src": "resources/js/assets/images/client/wfp-logo-standard-blue-en.png"
+  },
+  "resources/js/assets/images/client/who-logo.png": {
+    "file": "assets/who-logo-jfEY72dW.png",
+    "src": "resources/js/assets/images/client/who-logo.png"
+  },
+  "resources/js/assets/images/group/AVA ASSOCIATE.jpg": {
+    "file": "assets/AVA ASSOCIATE-B9Wc2vUO.jpg",
+    "src": "resources/js/assets/images/group/AVA ASSOCIATE.jpg"
+  },
+  "resources/js/assets/images/group/DV-Logo.png": {
+    "file": "assets/DV-Logo-DFF05eaK.png",
+    "src": "resources/js/assets/images/DV_Header_Logo.png"
+  },
+  "resources/js/assets/images/group/DV-PLUS.png": {
+    "file": "assets/DV-PLUS-CJ0KNlXw.png",
+    "src": "resources/js/assets/images/group/DV-PLUS.png"
+  },
+  "resources/js/assets/images/group/IDC.png": {
+    "file": "assets/IDC-CnM7TIQu.png",
+    "src": "resources/js/assets/images/group/IDC.png"
+  },
+  "resources/js/assets/images/group/IFL.png": {
+    "file": "assets/IFL-pFP-bXt-.png",
+    "src": "resources/js/assets/images/group/IFL.png"
+  },
+  "resources/js/assets/images/group/IIDT.png": {
+    "file": "assets/IIDT-QjbYdgMa.png",
+    "src": "resources/js/assets/images/group/IIDT.png"
+  },
+  "resources/js/assets/images/home_about.jpg": {
+    "file": "assets/home_about-DJPZ53Sl.jpg",
+    "src": "resources/js/assets/images/home_about.jpg"
+  },
+  "resources/js/assets/images/home_contact-with-us.jpg": {
+    "file": "assets/home_contact-with-us-B46s8Tve.jpg",
+    "src": "resources/js/assets/images/home_contact-with-us.jpg"
+  },
+  "resources/js/assets/images/home_services.jpg": {
+    "file": "assets/home_services-CnLrvBtK.jpg",
+    "src": "resources/js/assets/images/home_services.jpg"
+  },
+  "resources/js/assets/images/home_works.jpg": {
+    "file": "assets/home_works-Y9Ost5xH.jpg",
+    "src": "resources/js/assets/images/home_works.jpg"
+  },
+  "resources/js/assets/images/md-sir.jpg": {
+    "file": "assets/md-sir-BpPn99Ra.jpg",
+    "src": "resources/js/assets/images/md-sir.jpg"
+  },
+  "resources/js/assets/images/service/service_acoustic.jpg": {
+    "file": "assets/service_acoustic-BFXEbSQm.jpg",
+    "src": "resources/js/assets/images/service/service_acoustic.jpg"
+  },
+  "resources/js/assets/images/service/service_architecture.jpg": {
+    "file": "assets/service_architecture-CnQGkz9O.jpg",
+    "src": "resources/js/assets/images/service/service_architecture.jpg"
+  },
+  "resources/js/assets/images/service/service_design & build package.jpg": {
+    "file": "assets/service_design _ build package-IVIYeZrf.jpg",
+    "src": "resources/js/assets/images/service/service_design & build package.jpg"
+  },
+  "resources/js/assets/images/service/service_epc.jpg": {
+    "file": "assets/service_epc-DT4xucun.jpg",
+    "src": "resources/js/assets/images/service/service_epc.jpg"
+  },
+  "resources/js/assets/images/service/service_interior.jpg": {
+    "file": "assets/service_interior-CtL71ewT.jpg",
+    "src": "resources/js/assets/images/service/service_interior.jpg"
+  },
+  "resources/js/assets/images/service/service_project-management.jpg": {
+    "file": "assets/service_project-management-CEXJd_iH.jpg",
+    "src": "resources/js/assets/images/service/service_project-management.jpg"
+  },
+  "resources/js/assets/images/service/service_slider_photo.jpg": {
+    "file": "assets/service_slider_photo-Gp_Vfqx2.jpg",
+    "src": "resources/js/assets/images/service/service_slider_photo.jpg"
+  },
+  "resources/js/assets/images/vison.jpg": {
+    "file": "assets/vison-BcuQyl1W.jpg",
+    "src": "resources/js/assets/images/vison.jpg"
+  },
+  "resources/js/pages/Dashboard/Auth/Login.vue": {
+    "file": "assets/Login-DJpL7QSX.js",
+    "name": "Login",
+    "src": "resources/js/pages/Dashboard/Auth/Login.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-NBHUvr7I.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Cms/Clients.vue": {
+    "file": "assets/Clients-DWYXpR9v.js",
+    "name": "Clients",
+    "src": "resources/js/pages/Dashboard/Cms/Clients.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_Modal-Cw_anYlU.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Cms/Contacts.vue": {
+    "file": "assets/Contacts-ayseeGlB.js",
+    "name": "Contacts",
+    "src": "resources/js/pages/Dashboard/Cms/Contacts.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_Modal-Cw_anYlU.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Cms/HeroSlider.vue": {
+    "file": "assets/HeroSlider-Bp3CiaHC.js",
+    "name": "HeroSlider",
+    "src": "resources/js/pages/Dashboard/Cms/HeroSlider.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_Modal-Cw_anYlU.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Cms/Pages/Create.vue": {
+    "file": "assets/Create-Bo3S4Nk2.js",
+    "name": "Create",
+    "src": "resources/js/pages/Dashboard/Cms/Pages/Create.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Cms/Pages/Edit.vue": {
+    "file": "assets/Edit-CA7vbRq2.js",
+    "name": "Edit",
+    "src": "resources/js/pages/Dashboard/Cms/Pages/Edit.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Cms/Pages/Index.vue": {
+    "file": "assets/Index-DXBbXQNr.js",
+    "name": "Index",
+    "src": "resources/js/pages/Dashboard/Cms/Pages/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_Modal-Cw_anYlU.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Cms/Team/Create.vue": {
+    "file": "assets/Create-CRhhDlmi.js",
+    "name": "Create",
+    "src": "resources/js/pages/Dashboard/Cms/Team/Create.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_SummernoteEditor-D_vcoR3o.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Cms/Team/Index.vue": {
+    "file": "assets/Index-BQn-QuzA.js",
+    "name": "Index",
+    "src": "resources/js/pages/Dashboard/Cms/Team/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Index.vue": {
+    "file": "assets/Index-CWgSWrvt.js",
+    "name": "Index",
+    "src": "resources/js/pages/Dashboard/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Projects/Category.vue": {
+    "file": "assets/Category-BjKhRuuZ.js",
+    "name": "Category",
+    "src": "resources/js/pages/Dashboard/Projects/Category.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_Modal-Cw_anYlU.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Projects/Create.vue": {
+    "file": "assets/Create-Dvlm92bq.js",
+    "name": "Create",
+    "src": "resources/js/pages/Dashboard/Projects/Create.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_SummernoteEditor-D_vcoR3o.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Projects/Edit.vue": {
+    "file": "assets/Edit-hFvsV7_M.js",
+    "name": "Edit",
+    "src": "resources/js/pages/Dashboard/Projects/Edit.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_SummernoteEditor-D_vcoR3o.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Projects/Index.vue": {
+    "file": "assets/Index-D6wpYz6M.js",
+    "name": "Index",
+    "src": "resources/js/pages/Dashboard/Projects/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/pages/Dashboard/Setting/Index.vue": {
+    "file": "assets/Index-9fGqaTr0.js",
+    "name": "Index",
+    "src": "resources/js/pages/Dashboard/Setting/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/pages/Frontend/About.vue": {
+    "file": "assets/About-BgclWW5R.js",
+    "name": "About",
+    "src": "resources/js/pages/Frontend/About.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-NBHUvr7I.js"
+    ],
+    "assets": [
+      "assets/about-page-B5swAhF9.jpg",
+      "assets/vison-BcuQyl1W.jpg",
+      "assets/chairman madam-JTR9UNaF.jpg",
+      "assets/md-sir-BpPn99Ra.jpg",
+      "assets/IIDT-QjbYdgMa.png",
+      "assets/DV-Logo-DFF05eaK.png",
+      "assets/IDC-CnM7TIQu.png",
+      "assets/IFL-pFP-bXt-.png",
+      "assets/DV-PLUS-CJ0KNlXw.png",
+      "assets/AVA ASSOCIATE-B9Wc2vUO.jpg",
+      "assets/UNICEF_Logo-DE88l4c_.png",
+      "assets/wfp-logo-standard-blue-en-DY4r_WWd.png",
+      "assets/who-logo-jfEY72dW.png",
+      "assets/ilo logo-C3FTPQb2.png",
+      "assets/World_Vision_new_logo-zUbRcEK2.png",
+      "assets/DHL_Logo.svg-BOSoFLF5.png",
+      "assets/Li_Fung_logo_logotype_emblem_symbol-BJzpIo_o.png",
+      "assets/NEC_Corporation.max-600x480-P2jCrfUX.png",
+      "assets/Singapore_Airlines_Logo_2.svg-C-iyexHy.png",
+      "assets/agrani bank logo-TnrwzY2-.png",
+      "assets/pubali bank-logo-CU5Owe-e.png",
+      "assets/dhaka-mass-transit-company-limited-dmtcl-logo-DA9F1D1088-seeklogo.com-CWF31WIw.png",
+      "assets/redisson blu-BOLw2OGj.jpg",
+      "assets/The_Westin_Dhaka-VF7RGNV1.png",
+      "assets/le-meridian-dhaka-logo-_D56w5ZS.png",
+      "assets/sheltech logo-BsMAlXsc.jpg",
+      "assets/logo-care-B33V5DOM.png",
+      "assets/ustc-logo-x-pqugJ8.png",
+      "assets/all community club logo-AabpG7Wk.png",
+      "assets/Amari hotel Logo-BjjTtNJt.png",
+      "assets/bashundhora group logo-CE0hlH3B.png",
+      "assets/BGB_Logo-B8_NzWxW.png",
+      "assets/classic group logo-CPDMp2NY.png",
+      "assets/EPB logo-CkBiM31Q.png",
+      "assets/GCCN logo-Be9LwH0h.png",
+      "assets/grameen telecom trust logo-D7n14Khj.jpg",
+      "assets/gtcl logo-CbbwOq-l.png",
+      "assets/mk electronics logo-DjSX2bKh.png",
+      "assets/rangs properties ltd-CYty_Xhy.png",
+      "assets/SavetheChildren logo-DBTZhRd5.png",
+      "assets/shahabuddin hospital logo-BeRtcriG.jpeg",
+      "assets/SquarePharmaLogo-CdIsWaMv.png",
+      "assets/tm textile logo-DbRripFY.png",
+      "assets/UNFPA_logo-Dc93uaYY.png",
+      "assets/united-group-BhYQ831k.png",
+      "assets/well group logo-DtLaNHyM.jpeg"
+    ]
+  },
+  "resources/js/pages/Frontend/Career.vue": {
+    "file": "assets/Career-DflNPB7P.js",
+    "name": "Career",
+    "src": "resources/js/pages/Frontend/Career.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-NBHUvr7I.js"
+    ]
+  },
+  "resources/js/pages/Frontend/Contact.vue": {
+    "file": "assets/Contact-APfJ9YB4.js",
+    "name": "Contact",
+    "src": "resources/js/pages/Frontend/Contact.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-NBHUvr7I.js"
+    ]
+  },
+  "resources/js/pages/Frontend/Index.vue": {
+    "file": "assets/Index-D1Hw-A0B.js",
+    "name": "Index",
+    "src": "resources/js/pages/Frontend/Index.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-NBHUvr7I.js",
+      "_thumbs-CsNyTZ2y.js"
+    ],
+    "css": [
+      "assets/Index-CCy_AgYZ.css"
+    ],
+    "assets": [
+      "assets/home_about-DJPZ53Sl.jpg",
+      "assets/home_services-CnLrvBtK.jpg",
+      "assets/home_works-Y9Ost5xH.jpg",
+      "assets/home_contact-with-us-B46s8Tve.jpg"
+    ]
+  },
+  "resources/js/pages/Frontend/InsideWork.vue": {
+    "file": "assets/InsideWork-DuaK_a5C.js",
+    "name": "InsideWork",
+    "src": "resources/js/pages/Frontend/InsideWork.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-NBHUvr7I.js",
+      "_thumbs-CsNyTZ2y.js"
+    ]
+  },
+  "resources/js/pages/Frontend/Services.vue": {
+    "file": "assets/Services-C_j1IUMs.js",
+    "name": "Services",
+    "src": "resources/js/pages/Frontend/Services.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-NBHUvr7I.js"
+    ],
+    "assets": [
+      "assets/service_architecture-CnQGkz9O.jpg",
+      "assets/service_interior-CtL71ewT.jpg",
+      "assets/service_acoustic-BFXEbSQm.jpg",
+      "assets/service_project-management-CEXJd_iH.jpg",
+      "assets/service_design _ build package-IVIYeZrf.jpg",
+      "assets/service_epc-DT4xucun.jpg"
+    ]
+  },
+  "resources/js/pages/Frontend/Work.vue": {
+    "file": "assets/Work-CUxSPeWf.js",
+    "name": "Work",
+    "src": "resources/js/pages/Frontend/Work.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_GuestLayout-NBHUvr7I.js"
+    ]
+  }
+}
