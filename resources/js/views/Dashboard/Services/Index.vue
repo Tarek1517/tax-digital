@@ -53,74 +53,72 @@ onMounted(() => {
 					<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 						<tr>
 							<th scope="col" class="px-6 py-3">
-								Product name
+								Image
 							</th>
 							<th scope="col" class="px-6 py-3">
-								Color
+								Title
+							</th>
+                            <th scope="col" class="px-6 py-3">
+								Icon
+							</th>
+							<th scope="col" class="px-6 py-3">
+								Name
 							</th>
 							<th scope="col" class="px-6 py-3">
 								Category
 							</th>
 							<th scope="col" class="px-6 py-3">
-								Price
+								Short Description
+							</th>
+							<th scope="col" class="px-6 py-3">
+								Order Level
 							</th>
 							<th scope="col" class="px-6 py-3">
 								Action
 							</th>
+
 						</tr>
 					</thead>
 					<tbody>
-						<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+
+						<tr v-for="service in services?.data" :key="service.id"
+                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
 							<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-								Apple MacBook Pro 17"
+								<img class="w-10 h-auto" :src="service?.image" :alt="service?.name">
 							</th>
+
 							<td class="px-6 py-4">
-								Silver
+								{{ service?.title }}
+							</td>
+                            <td class="px-6 py-2">
+								<Icon :name="service?.icon" class="text-3xl" />
 							</td>
 							<td class="px-6 py-4">
-								Laptop
+								{{ service?.name }}
 							</td>
 							<td class="px-6 py-4">
-								$2999
+								{{ service.service_cat?.name }}
+							</td>
+                            <td class="px-6 py-4">
+								{{ service?.short_description }}
+							</td>
+                            <td class="px-6 py-4">
+								{{ service?.order_level }}
 							</td>
 							<td class="px-6 py-4">
-								<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <div class="flex items-center gap-2">
+								    <RouterLink :to="`/admin/edit-service/${service?.id}`" class="flex items-center gap-1 px-2 py-1 rounded border border-green-600 bg-green-500/10 text-green-600 hover:bg-green-600 hover:text-white">
+										<Icon name="material-symbols:edit-square-outline-rounded" />
+										<span class="text-xs font-normal">Edit</span>
+									</RouterLink>
+                                    <button @click="handelDelete(service?.id)" class="flex items-center gap-1 px-2 py-1 rounded border border-orange-600 bg-orange-500/10 text-orange-600 hover:bg-orange-600 hover:text-white">
+										<Icon name="material-symbols-light:delete-outline-sharp" />
+										<span class="text-xs font-normal">Delete</span>
+									</button>
+                                </div>
 							</td>
 						</tr>
-						<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-							<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-								Microsoft Surface Pro
-							</th>
-							<td class="px-6 py-4">
-								White
-							</td>
-							<td class="px-6 py-4">
-								Laptop PC
-							</td>
-							<td class="px-6 py-4">
-								$1999
-							</td>
-							<td class="px-6 py-4">
-								<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-							</td>
-						</tr>
-						<tr class="bg-white dark:bg-gray-800">
-							<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-								Magic Mouse 2
-							</th>
-							<td class="px-6 py-4">
-								Black
-							</td>
-							<td class="px-6 py-4">
-								Accessories
-							</td>
-							<td class="px-6 py-4">
-								$99
-							</td>
-							<td class="px-6 py-4">
-								<a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-							</td>
-						</tr>
+
 					</tbody>
 				</table>
 			</div>

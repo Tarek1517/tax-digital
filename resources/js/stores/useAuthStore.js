@@ -1,89 +1,169 @@
-import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
-import useAxios from '@/composables/useAxios';
-import { useRouter } from 'vue-router';
+import { defineStore } from "pinia";
+import { ref, computed } from "vue";
+import useAxios from "@/composables/useAxios";
+import { useRouter } from "vue-router";
+import axios from 'axios';
 
-export const useAuthStore = defineStore('auth', () => {
-    const router = useRouter();
-    const user = ref(JSON.parse(localStorage.getItem('user')) ?? null);
-    const isLoggedIn = computed(() => !!user.value);
+export const useAuthStore = defineStore("auth", () => {
+  const router = useRouter();
+  const user = ref(JSON.parse(localStorage.getItem("user")) || null);
+  const admin = ref(JSON.parse(localStorage.getItem("admin")) || null);
+  const type = ref(localStorage.getItem("type") || null);
 
-    const { loading, error, sendRequest } = useAxios();
+  const isLoggedIn = computed(() => !!user.value);
+  const isAdminLoggedIn = computed(() => !!admin.value);
 
-    async function fetchUser() {
-        const storedUser = JSON.parse(await getLocalStorage());
-        if (storedUser) {
-            try {
-                const { data } = await sendRequest({
-                    method: 'get',
-                    url: '/user',
-                    headers: {
-                        "Authorization": `Bearer ${storedUser?.token}`
-                    }
-                });
-                if (data) {} else {
-                    await clearLocalStorage();
-                }
-            } catch (err) {
-                await clearLocalStorage();
-            }
+  const { loading, error, sendRequest } = useAxios();
+
+  function setLocalStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  async function fetchUser() {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      try {
+        const { data } = await sendRequest({
+          method: "get",
+          url: "/user",
+          headers: {
+            Authorization: `Bearer ${storedUser.token}`,
+          },
+        });
+        if (data) {
+          user.value = data; // Update user data if valid
         } else {
-            await clearLocalStorage();
+          clearLocalStorage();
         }
+      } catch (err) {
+        clearLocalStorage();
+      }
+    } else {
+      clearLocalStorage();
     }
+  }
 
-    async function login(credential) {
-        try {
-            await sendRequest({
-                method: 'get',
-                url: "/sanctum/csrf-cookie",
-            });
+  async function login(credential) {
+    try {
 
-            const loginResponse = await sendRequest({
-                method: "post",
-                url: "/login",
-                data: credential
-            });
-            if (loginResponse.data) {
-                await setLocalStorage(loginResponse.data);
-                user.value = loginResponse.data;
-                return loginResponse;
-            }
-        } catch (err) {
-            throw err;
-        }
+      axios.get(`${import.meta.env.VITE_APP_URL}/sanctum/csrf-cookie`);
+
+      const loginResponse = await sendRequest({
+        method: "post",
+        url: "/login",
+        data: credential,
+      });
+      if (loginResponse.data) {
+        setLocalStorage("user", loginResponse.data);
+        user.value = loginResponse.data;
+        return loginResponse;
+      }
+    } catch (err) {
+      throw err;
     }
+  }
 
+  async function adminLogin(credential) {
+    try {
+      // Ensure CSRF token is set
+      await axios.get(`${import.meta.env.VITE_APP_URL}/sanctum/csrf-cookie`);
 
-    async function logout() {
-        try {
-            await sendRequest({
-                url: "/api/logout",
-                method: "GET"
-            });
-            user.value = null;
-            await clearLocalStorage();
-            router.push({ name: "home" });
-        } catch (err) {
-            console.error("Logout failed", error.value);
-        }
+      const loginResponse = await sendRequest({
+        method: "post",
+        url: "/admin/login",
+        data: credential,
+      });
+
+      if (loginResponse.data) {
+        const { token, user, type: userType } = loginResponse.data;
+
+        // Save admin and type in localStorage
+        setLocalStorage("admin", { token, user });
+        localStorage.setItem("type", userType);
+
+        // Update reactive state
+        admin.value = { token, user };
+        type.value = userType;
+
+        return loginResponse;
+      }
+    } catch (err) {
+      console.error("Admin login failed:", err);
+      throw err;
     }
+  }
 
-    async function setLocalStorage(user) {
-        localStorage.setItem('user', JSON.stringify(user));
+  async function register(signupData) {
+    try {
+      const response = await sendRequest({
+        method: "post",
+        url: "/customer/register",
+        data: signupData,
+      });
+
+      if (response?.data) {
+        setLocalStorage("user", response.data);
+        user.value = response.data;
+        return response;
+      }
+    } catch (err) {
+      throw err;
     }
+  }
 
-    async function clearLocalStorage() {
-        localStorage.removeItem('user');
+  async function logout() {
+    try {
+      await sendRequest({
+        url: "/api/logout",
+        method: "get",
+      });
+      user.value = null;
+      clearLocalStorage("user");
+      router.push({ name: "Home" });
+    } catch (err) {
+      console.error("Logout failed", err);
     }
+  }
 
-    async function getLocalStorage() {
-        return localStorage.getItem('user');
+  async function adminLogout() {
+    try {
+      await sendRequest({
+        url: "/api/logout",
+        method: "get",
+      });
+      admin.value = null;
+      clearLocalStorage("admin");
+      router.push({ name: "adminLogin" });
+    } catch (err) {
+      console.error("Logout failed", err);
     }
+  }
 
-    function getToken() {
-        return JSON.parse(localStorage.getItem("user"))?.token;
-    }
+  function setLocalStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
 
-    return { user, login, isLoggedIn, fetchUser, logout, loading, error }
+  function clearLocalStorage(key) {
+    localStorage.removeItem(key);
+  }
+
+  function getToken() {
+    return JSON.parse(localStorage.getItem("user"))?.token || null;
+  }
+
+  return {
+    user,
+    admin,
+    login,
+    adminLogin,
+    register,
+    fetchUser,
+    logout,
+    isLoggedIn,
+    isAdminLoggedIn,
+    loading,
+    error,
+    getToken,
+    adminLogout,
+  };
 });

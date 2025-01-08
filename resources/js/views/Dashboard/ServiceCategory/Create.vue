@@ -14,11 +14,18 @@ const form = ref({
 	name: null,
     title: null,
     icon:null,
+    image: null,
     short_description:null,
     description:null,
     order_level: null,
 	status:1,
 });
+const categoryImg = ref(null);
+const image = (image) => {
+    const file = image.target.files[0];
+    form.value.image = file;
+    categoryImg.value = URL.createObjectURL(file);
+};
 
 
 // Save Product
@@ -71,6 +78,41 @@ const onSubmit = async() => {
 					<label for="short_description" class="text-sm mb-2 block">Short Description</label>
 					<textarea v-model="form.short_description" class=" w-full h-20 border border-primary focus:border-primary focus:ring-0 focus:shadow focus:shadow-primary"></textarea>
 				</div>
+                <div class="w-1/2 mb-5 px-2">
+                    <div class="flex flex-col gap-1">
+                        <label for="number" class="text-sm mb-2"
+                            >Service Image</label
+                        >
+                        <label
+                            class="border border-primary border-dashed p-2 rounded-2xl flex items-center justify-center size-44 cursor-pointer"
+                        >
+                            <img
+                                v-if="categoryImg"
+                                :src="categoryImg"
+                                class="w-full h-full rounded-md"
+                            />
+                            <div
+                                v-if="!categoryImg"
+                                class="flex flex-col items-center justify-center gap-2"
+                            >
+                                <Icon
+                                    name="tabler:cloud-upload"
+                                    class="text-primary text-2xl opacity-85"
+                                />
+                                <span
+                                    class="text-primary text-sm font-normal opacity-85"
+                                    >Upload Serviec Image</span
+                                >
+                            </div>
+                            <input
+                                id="category-icon"
+                                @change="image"
+                                type="file"
+                                hidden
+                            />
+                        </label>
+                    </div>
+                </div>
 				<div class="w-full px-2">
 					<label for="description" class="text-sm mb-2 block">Description</label>
 					<div class="editor_data">

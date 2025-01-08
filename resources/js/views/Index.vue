@@ -21,7 +21,7 @@ import AppLayout from "@/components/AppLayout.vue";
                 </div>
                 <div class="w-full lg:w-1/2">
                     <div class="py-8 lg:py-28">
-                      <h2 class="text-2xl lg:text-4xl font-bold text-secondary">What do we do</h2>
+                      <h2 class="text-2xl lg:text-4xl font-bold text-black">What do we do</h2>
                       <p class="text-sm lg:text-lg text-gray-700 py-5 lg:py-7 leading-loose max-w-xl">You are already too busy with the daily grind as a business owner, what you need is an accountant who's prompt and reliable and can set you ready for the next step by making use of clear and business-focused language without paperwork faff, in other words, we do online accounting</p>
                       <p class="text-sm lg:text-lg text-gray-700 lg:pb-7">It includes the preparation of iXBRL accounts and tax returns.</p>
                     </div>
@@ -35,14 +35,14 @@ import AppLayout from "@/components/AppLayout.vue";
         <Container>
             <div >
                 <div class="lg:text-center">
-                  <h2 class="text-2xl lg:text-4xl font-bold text-secondary lg:pt-10">How it Works</h2>
+                  <h2 class="text-2xl lg:text-4xl font-bold text-black lg:pt-10">How it Works</h2>
                   <p class="text-sm lg:text-lg text-gray-700 py-3">In 4 easy and paperless steps;</p>
                 </div>
                 <div class="flex flex-wrap py-10">
                     <div class="w-full lg:w-1/4 px-4">
                         <div>
                           <img src="https://www.debitam.com/wp-content/themes/debitam-uk/image/home/how-it-works1.svg" alt="">
-                          <h4 class="text-xl font-medium text-secondary max-w-20 py-4 lg:py-8" >Information sharing</h4>
+                          <h4 class="text-xl font-medium text-black max-w-20 py-4 lg:py-8" >Information sharing</h4>
                           <span class="w-12 h-[1px] bg-gray-500 block "> </span>
                           <p class="text-sm lg:text-lg text-gray-700 py-4 lg:py-7 leading-loose w-50">Your financial information is to be processed online in compliance with GDPR/EU. For example, you can share your bank statements via email with your accountant to walk through them.</p>
                         </div>
@@ -50,7 +50,7 @@ import AppLayout from "@/components/AppLayout.vue";
                     <div class="w-full lg:w-1/4 px-4">
                         <div>
                           <img src="https://www.debitam.com/wp-content/themes/debitam-uk/image/home/how-it-works2.svg" alt="">
-                          <h4 class="text-xl font-medium text-secondary  py-4 lg:py-8" >Company Accounts & tax returns preparation</h4>
+                          <h4 class="text-xl font-medium text-black  py-4 lg:py-8" >Company Accounts & tax returns preparation</h4>
                           <span class="w-32 h-[1px] bg-gray-500 block "> </span>
                           <p class="text-sm lg:text-lg text-gray-700 py-4 lg:py-7 leading-loose w-50">iXBRL accounts and tax returns are prepared as per Companies House and HMRC's requirements.</p>
                         </div>
@@ -58,7 +58,7 @@ import AppLayout from "@/components/AppLayout.vue";
                     <div class="w-full lg:w-1/4 px-4">
                         <div>
                           <img src="https://www.debitam.com/wp-content/themes/debitam-uk/image/home/how-it-works3.svg" alt="">
-                          <h4 class="text-xl font-medium text-secondary max-w-44 py-4 lg:py-8" >Review & approval of drafts</h4>
+                          <h4 class="text-xl font-medium text-black max-w-44 py-4 lg:py-8" >Review & approval of drafts</h4>
                           <span class="w-32 h-[1px] bg-gray-500 block "> </span>
                           <p class="text-sm lg:text-lg text-gray-700 py-4 lg:py-7 leading-loose max-w-50">You get to review and sign off on every step. We don't submit your accounts before having your approval.</p>
                         </div>
@@ -66,7 +66,7 @@ import AppLayout from "@/components/AppLayout.vue";
                     <div class="w-full lg:w-1/4 px-4">
                         <div class="">
                           <img src="https://www.debitam.com/wp-content/themes/debitam-uk/image/home/how-it-works4.svg" alt="">
-                          <h4 class="text-xl font-medium text-secondary py-4 lg:py-8" >Submission to HMRC & Companies House</h4>
+                          <h4 class="text-xl font-medium text-black py-4 lg:py-8" >Submission to HMRC & Companies House</h4>
                           <span class="w-32 h-[1px] bg-gray-500 block "> </span>
                           <p class="text-sm lg:text-lg text-gray-700 py-4 lg:py-7 leading-loose max-w-50">Once you approve the accounts, we submit your company accounts & tax return to the authorities and share the proof of submission for your record.</p>
                         </div>
@@ -86,7 +86,7 @@ import AppLayout from "@/components/AppLayout.vue";
     <section class="h-auto bg-center bg-no-repeat bg-cover lg:py-20 bg-[url('https://www.debitam.com/wp-content/themes/debitam-uk/image/home/do-help-bg.svg')]">
       <Container>
         <div>
-            <h2 class="text-2xl lg:text-4xl font-bold text-secondary text-center py-12">Who do we help to</h2>
+            <h2 class="text-2xl lg:text-4xl font-bold text-black text-center py-12">Who do we help to</h2>
             <ul class="flex flex-wrap justify-center gap-5 lg:gap-14 mb-10 lg:mb-20 mx-auto">
                 <li class="flex justify-center gap-3 bg-white rounded-xl px-8 lg:px-16 py-3 lg:py-6 shadow-lg">
                   <img src="https://www.debitam.com/wp-content/themes/debitam-uk/image/home/do-help-lidt-icon.svg" alt="">
@@ -128,7 +128,7 @@ import AppLayout from "@/components/AppLayout.vue";
           </div>
           <div class="w-full lg:w-1/2 px-12">
             <div class="py-12 lg:py-28">
-              <h2 class="text-2xl lg:text-4xl font-bold text-secondary">How long it takes</h2>
+              <h2 class="text-2xl lg:text-4xl font-bold text-black">How long it takes</h2>
               <p class="text-sm lg:text-lg text-gray-700 py-4 lg:py-7 leading-loose max-w-lg">A company account and tax return filing for a limited company take us 3 to 5 working days in most circumstances.</p>
               <p class="text-sm lg:text-lg text-gray-700 lg:pb-7 leading-loose max-w-lg">If the deadline is fast approaching, we have an express company filing service that's guaranteed to submit your accounts to Companies House and HMRC within 24 hours for an extra £99.</p>
             </div>

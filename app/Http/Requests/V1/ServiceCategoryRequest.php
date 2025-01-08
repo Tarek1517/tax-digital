@@ -22,14 +22,17 @@ class ServiceCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => $this->isMethod('POST') ? 'required|string|unique:service_categories,name|max:255' : 'required|string|max:255' ,
-			'title' => 'nullable|string|max:255',
-			'slug' => 'nullable|string',
-			'icon' => 'nullable|string|max:1000',
-			'short_description' => 'nullable|string|max:1000',
-			'description' => 'nullable|string',
-			'order_level' => 'nullable',
-			'status' => 'required'
-	    ];
+            'name' => $this->isMethod('POST') ? 'required|string|unique:service_categories,name|max:255' : 'required|string|max:255',
+            'title' => 'nullable|string|max:255',
+            'slug' => 'nullable|string',
+            'icon' => 'nullable|string|max:1000',
+            'image' => $this->isMethod('post')
+                ? 'nullable|mimes:png,jpg,jpeg,webp,avif|max:2048'
+                : 'sometimes|nullable|mimes:png,jpg,jpeg,webp,avif|max:2048',
+            'short_description' => 'nullable|string|max:1000',
+            'description' => 'nullable|string',
+            'order_level' => 'nullable',
+            'status' => 'required'
+        ];
     }
 }

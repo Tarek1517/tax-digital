@@ -51,10 +51,13 @@ onMounted(() => {
 					<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 						<tr>
 							<th scope="col" class="px-6 py-3">
-								Service Name
+								Category Image
+							</th>
+                            <th scope="col" class="px-6 py-3">
+								Category Name
 							</th>
 							<th scope="col" class="px-6 py-3">
-								Service Title
+								Category Title
 							</th>
 							<th scope="col" class="px-6 py-3">
 								Icon
@@ -68,7 +71,10 @@ onMounted(() => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr v-for="category in categories?.data" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+						<tr v-for="category in categories?.data" :key="category.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+								<img class="w-10 h-auto" :src="category?.image" :alt="service?.name">
+							</th>
 							<th scope="row" class="px-6 py-2 font-medium text-gray-900 dark:text-white">
 								{{ category?.name }}
 							</th>

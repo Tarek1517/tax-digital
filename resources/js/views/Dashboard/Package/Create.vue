@@ -36,7 +36,9 @@ const form = ref({
     title: null,
     price: null,
     image: null,
-    short_description: null,
+    description: null,
+    order_level: null,
+    status: 1,
 });
 
 // Save Product
@@ -74,10 +76,22 @@ const onSubmit = async() => {
                         <input type="number" class="input" v-model="form.price" />
                     </div>
                 </div>
+                <div class="w-1/2 ">
+                    <div class="flex flex-col gap-1">
+                        <label for="number" class="text-sm mb-2"
+                            >Order Level</label
+                        >
+                        <input
+                            type="number"
+                            class="input"
+                            v-model="form.order_level"
+                        />
+                    </div>
+                </div>
                 <div class="w-1/2">
                     <div class="flex flex-col gap-1 ">
                         <label for="text" class="text-sm mb-2">Description</label>
-                        <textarea class="input h-40"  v-model="form.short_description"></textarea>
+                        <textarea class="input h-40"  v-model="form.description"></textarea>
                     </div>
                 </div>
                 <div class="w-1/2">

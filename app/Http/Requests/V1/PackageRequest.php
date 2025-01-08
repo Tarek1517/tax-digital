@@ -24,8 +24,11 @@ class PackageRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'short_description' => 'nullable|string|max:255',
+            'slug' => 'nullable|string',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,webp,avif|max:2048',
+            'description' => 'nullable|string|max:255',
+            'order_level' => 'required|integer',
+            'status' => 'required',
         ];
     }
 }

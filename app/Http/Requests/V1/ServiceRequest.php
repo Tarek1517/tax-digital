@@ -21,18 +21,22 @@ class ServiceRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'title' => 'nullable|string|max:255',
             'name' => 'required|string|max:255',
             'slug' => 'nullable|string',
-			'service_category_id' => 'required|integer|exists:service_categories,id',
-            'image' => 'nullable|string',
+            'service_category_id' => 'required|integer|exists:service_categories,id',
+            'image' => $this->isMethod('post')
+                ? 'nullable|mimes:png,jpg,jpeg,webp,avif|max:2048'
+                : 'sometimes|nullable|mimes:png,jpg,jpeg,webp,avif|max:2048',
+            'icon' => 'nullable|string|max:1000',
             'short_description' => 'nullable|string|max:500',
             'description' => 'nullable|string|max:1500',
             'order_level' => 'required|integer',
-			'status' => 'required'
+            'status' => 'required'
         ];
     }
 
-	protected $stopOnFirstFailure = true;
+    protected $stopOnFirstFailure = true;
 }

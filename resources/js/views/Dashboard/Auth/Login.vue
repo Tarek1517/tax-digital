@@ -24,24 +24,38 @@
 <script setup>
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores/useAuthStore.js';
-import { useRouter, useRoute } from 'vue-router'
-import { toast } from "vue3-toastify";
+import { useRouter, useRoute } from 'vue-router';
+import { toast } from 'vue3-toastify';
 
 const authStore = useAuthStore();
-const router = useRouter()
-const route = useRoute()
+const router = useRouter();
+const route = useRoute();
 
 const loginCredential = ref({
-    email: 'admin@admin.com',
+    email: 'admin@taxdigital.com',
     password: '12345678',
 });
 
+const isLoading = ref(false);
+
 const handleLogin = async () => {
-    const loginResponse = await authStore.login(loginCredential.value);
-    if (loginResponse) {
-        toast.success('Login successful!', { autoClose: 1000 });
-        const redirectPath = route.query.redirect || '/admin/dashboard';
-        router.push(redirectPath);
+    if (!loginCredential.value.email || !loginCredential.value.password) {
+        toast.error('Please fill in both email and password fields.');
+        return;
     }
-}
+
+    try {
+        isLoading.value = true;
+        const loginResponse = await authStore.adminLogin(loginCredential.value);
+        if (loginResponse) {
+            toast.success('Login successful!', { autoClose: 1000 });
+            const redirectPath = route.query.redirect || '/admin/dashboard';
+            router.push(redirectPath);
+        }
+    } catch (error) {
+        toast.error('Login failed. Please check your credentials.');
+    } finally {
+        isLoading.value = false;
+    }
+};
 </script>

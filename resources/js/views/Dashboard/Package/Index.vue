@@ -68,22 +68,21 @@ onMounted(() => {
         </div>
 
         <div class="flex flex-wrap p-5 -mx-3">
-            <div class="w-1/3 px-3  mb-6" v-for="item in packages?.data">
-                <div class="border border-primary bg-primary/5 shadow-lg shadow-primary/25 rounded-lg p-5 h-full w-full">
+            <div class="w-1/3 px-3  mb-6" v-for="item in packages?.data" :key="item.id">
+                <div class="border border-primary/55 bg-primary/5 shadow-lg shadow-primary/25 rounded-lg p-5 h-full w-full">
                     <div>
                         <img src="" alt="">
                     </div>
                     <h2 class="text-2xl font-medium text-gray-500 ">Title : {{item?.title}}</h2>
                     <p class="text-2xl text-primary">Price: {{item?.price}}</p>
                     <img :src="item?.image" class="w-44 h-auto py-5" />
-                    <p class="text-sm text-gray-700 py-3 w-80">{{item?.short_description}}</p>
-
+                    <p class="text-sm text-gray-700 py-3 w-80">{{item?.description}}</p>
 
                     <div class="flex gap-3 mt-5">
-                        <RouterLink to="/admin/edit-service" class="border border-primary rounded bg-white">
-                            <Icon name="material-symbols:edit-document-outline-sharp" class="text-xl text-gray-500 m-2 hover:text-primary" />
+                        <RouterLink :to="`/admin/edit-package/${item.id}`" class="border rounded border-green-600 bg-green-500/10  hover:bg-white ">
+                            <Icon name="material-symbols:edit-document-outline-sharp" class="text-xl text-green-600 m-2" />
                         </RouterLink>
-                        <button class="border border-primary rounded bg-white" @click="handelDelete(item.id)">
+                        <button class="border border-primary rounded bg-primary/10" @click="handelDelete(item.id)">
                             <Icon name="material-symbols:delete-outline" class="text-xl text-gray-500 m-2 hover:text-primary" />
                         </button>
                     </div>

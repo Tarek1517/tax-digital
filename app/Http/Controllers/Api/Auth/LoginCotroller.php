@@ -28,7 +28,7 @@ class LoginCotroller extends Controller
             ]);
         }
 
-        $token = $admin->createToken('admin', ['role:admin'])->plainTextToken;
+        $token = $admin->createToken('admin', ['role:customer'])->plainTextToken;
 
         return response()->json([
             'user' => $admin,

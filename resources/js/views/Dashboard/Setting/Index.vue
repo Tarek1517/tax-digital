@@ -1,103 +1,446 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import useAxios from '@/composables/useAxios';
-import { useAuthStore } from '@/stores/useAuthStore';
-import { toast } from 'vue3-toastify';
+import { onMounted, ref } from "vue";
+import SummernoteEditor from "vue3-summernote-editor";
+import useAxios from "@/composables/useAxios";
+import { toast } from "vue3-toastify";
+import GuestLayout from "@/components/Dashboard/GuestLayout.vue";
+import Modal from "@/components/Modal.vue";
 
+const { loading, error, sendRequest } = useAxios();
 
-const authStore = useAuthStore();
-const {loading, error, sendRequest} = useAxios();
-
-const getAllSetting = async() => {
+const getAllSetting = async () => {
     const response = await sendRequest({
-        method:'get',
-        url:'/v1/setting',
-        headers: {
-            authorization: `Bearer ${authStore.user.token}`,
-        }
+        method: "get",
+        url: "/v1/setting",
     });
-    form.value.phone_number = response.data.phone_number;
-    form.value.email_address = response.data.email_address;
-    form.value.socials = response.data.socials;
-}
+    setting.value.currency_symbol = response.data.currency_symbol;
+    setting.value.email = response.data.email;
+    setting.value.address = response.data.address;
+    setting.value.phone_number = response.data.phone_number;
+    setting.value.facebook_link = response.data.facebook_link;
+    setting.value.instagram_link = response.data.instagram_link;
+    setting.value.youtube_link = response.data.youtube_link;
+    setting.value.linkedin_link = response.data.linkedin_link;
+    setting.value.twitter_link = response.data.twitter_link;
+};
 
-const addSocials = () => {
-    form.value.socials.push({
-        key:null,
-        value:null,
-    })
-}
-const remove = (index) => form.value.socials.splice(index, 1);
+// get Page
+const pages = ref(null);
+const getPage = async () => {
+    const response = await sendRequest({
+        method: "get",
+        url: "/v1/all-page-list",
+    });
 
+    if (response) {
+        pages.value = response.data?.data;
+    }
+};
 
-const form = ref({
-    phone_number: [],
-    email_address: [],
-    socials: [{
-        icon:null,
-        link:null,
-    }]
+const tabs = ["App", "Footer"];
+const activeTab = ref(0);
+
+const setting = ref({
+    currency_symbol: null,
+    email: null,
+    address: null,
+    phone_number: null,
+    twitter_link: null,
+    facebook_link: null,
+    youtube_link: null,
+    instagram_link: null,
+    linkedin_link: null,
 });
 
 const onSubmit = async () => {
     const response = await sendRequest({
-        method:'post',
-        url:'/v1/setting',
-        data:form.value
+        method: "post",
+        url: "/v1/setting",
+        data: setting.value,
     });
-    if(response){
-        toast.success('Setting Upadated Successfully', {autoClose:500, 'theme':'dark'});
+
+    if (response) {
+        toast.success("Setting saved Successfully", {
+            autoClose: 500,
+            theme: "dark",
+        });
         getAllSetting();
     }
-}
+};
 
+const footer_columns = ref(null);
+const getFooter = async () => {
+    const response = await sendRequest({
+        method: "get",
+        url: "/v1/footer",
+    });
+
+    if (response) {
+        footer_columns.value = response.data;
+    }
+};
+
+const form = ref({
+    title: null,
+    pages: null,
+    content: null,
+    width: null,
+    order_number: null,
+});
+
+const resetForm = () => {
+    title.value = null;
+    pages.value = null;
+    content.value = null;
+    order_number.value = null;
+};
+
+const onFooterSubmit = async () => {
+    const response = await sendRequest({
+        method: "post",
+        url: "/v1/footer",
+        data: form.value,
+    });
+    if (response) {
+        toast.success("Footer save successfully");
+        getFooter();
+        isModalOpened.value = false;
+        resetForm();
+    }
+};
+
+const onFooterDelete = async (id) => {
+    const response = await sendRequest({
+        method: "delete",
+        url: `/v1/footer/${id}`,
+    });
+    if (response) {
+        toast.success("Footer Column Deleted Successfully");
+        getFooter();
+    }
+};
+
+// model
+const isModalOpened = ref(false);
+
+const openModal = () => {
+    isModalOpened.value = true;
+};
+const closeModal = () => {
+    isModalOpened.value = false;
+};
 
 onMounted(() => {
     getAllSetting();
-})
+    getFooter();
+    getPage();
+});
 </script>
 <template>
-    <AppLayout>
-        <div class="flex flex-wrap p-4 bg-white">
-            <div class="w-1/2 px-2">
-                <div class="mb-2">
-                    <label for="phone_number">Phone Number</label>
-                    <input v-model="form.phone_number" type="text" class="w-full p-2 rounded bg-transparent border focus:outline-none focus:ring-primary">
-                </div>
-            </div>
-            <div class="w-1/2 px-2">
-                <div class="mb-2">
-                    <label for="phone_number">Email Addreess</label>
-                    <input v-model="form.email_address" type="text" class="w-full p-2 rounded bg-transparent border focus:outline-none focus:ring-primary">
-                </div>
-            </div>
-            <div class="w-1/2 px-2">
-                <div class="flex items-center gap-1">
-                    <label for="socials">Social Icon</label>
-                    <button @click="addSocials" class="text-sm bg-primary text-white rounded px-2">Add More</button>
-                </div>
-                <div class="mb-3 p-4 border border-gray-500 rounded relative" v-for="(item, index) in form.socials">
-                    <button class="absolute top-1 right-1 bg-primary rounded text-white" v-if="form.socials?.length > 1" @click="remove">
-                        <Icon name="material-symbols:close" />
-                    </button>
-                    <div class="mb-3">
+    <GuestLayout>
+        <section>
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-5">
                     <div class="flex items-center gap-2">
-                        <label for="icon">Icon</label>
-                        <a href="https://icones.js.org/collection/all" target="_blank" class="text-primary flex items-center gap-1">Get icon code form here
-                                    <Icon name="mdi:share-outline" />
-                                </a>
+                        <Icon
+                            name="material-symbols:settings-outline-rounded"
+                            class="text-lg"
+                        />
+                        <h3 class="text-base font-medium">Setting</h3>
                     </div>
-                    <input  v-model="item.icon" type="text" class="w-full p-2 rounded bg-transparent border focus:outline-none focus:ring-primary">
+                </div>
+                <div class="flex space-x-2">
+                    <div class="w-1/5">
+                        <ul
+                            class="border border-common rounded overflow-hidden"
+                        >
+                            <li v-for="(tab, index) in tabs" :key="index">
+                                <button
+                                    @click="activeTab = index"
+                                    :class="[
+                                        'px-4 py-2 w-full border-b border-primary/30 hover:bg-primary hover:text-white',
+                                        activeTab === index
+                                            ? 'bg-primary text-white'
+                                            : 'text-black',
+                                    ]"
+                                >
+                                    {{ tab }}
+                                </button>
+                            </li>
+                        </ul>
                     </div>
-                    <div>
-                        <label for="icon">Link</label>
-                    <input  v-model="item.link" type="text" class="w-full p-2 rounded bg-transparent border focus:outline-none focus:ring-primary">
+                    <div class="w-4/5">
+                        <div class="w-full border border-common rounded p-2">
+                            <div
+                                class="w-full flex flex-wrap"
+                                v-if="activeTab === 0"
+                            >
+                                <div class="w-1/2 px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Phone Number</label
+                                    >
+                                    <input
+                                        v-model="setting.phone_number"
+                                        type="text"
+                                        class="p-2 rounded-md w-full"
+                                    />
+                                </div>
+
+                                <div class="w-1/2 px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Email</label
+                                    >
+                                    <input
+                                        v-model="setting.email"
+                                        type="text"
+                                        class="p-2 rounded-md w-full"
+                                    />
+                                </div>
+                                <div class="w-1/2 px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Facebook</label
+                                    >
+                                    <input
+                                        v-model="setting.facebook_link"
+                                        type="text"
+                                        class="p-2 rounded-md w-full"
+                                    />
+                                </div>
+
+                                <div class="w-1/2 px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Instagram</label
+                                    >
+                                    <input
+                                        v-model="setting.instagram_link"
+                                        type="text"
+                                        class="p-2 rounded-md w-full"
+                                    />
+                                </div>
+                                <div class="w-1/2 px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Linked In</label
+                                    >
+                                    <input
+                                        v-model="setting.linkedin_link"
+                                        type="text"
+                                        class="p-2 rounded-md w-full"
+                                    />
+                                </div>
+                                <div class="w-1/2 px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Youtube</label
+                                    >
+                                    <input
+                                        v-model="setting.youtube_link"
+                                        type="text"
+                                        class="p-2 rounded-md w-full"
+                                    />
+                                </div>
+                                <div class="w-1/2 px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Twitter</label
+                                    >
+                                    <input
+                                        v-model="setting.twitter_link"
+                                        type="text"
+                                        class="p-2 rounded-md w-full"
+                                    />
+                                </div>
+
+                                <div class="w-1/2 px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Currency Symbol</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="p-2 rounded-md w-full"
+                                        v-model="setting.currency_symbol"
+                                    />
+                                </div>
+
+                                <div class="w-full px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Address</label
+                                    >
+                                    <textarea
+                                        v-model="setting.address"
+                                        class="p-2 w-full focus:outline-none focus:ring-0 focus:border-common rounded ring-0 border border-common shadow-md shadow-common/50 transition-all ease-in-out duration-100"
+                                    ></textarea>
+                                </div>
+
+                                <div class="w-full mt-5">
+                                    <Button
+                                        @click="onSubmit"
+                                        class="w-full mx-auto bg-primary text-sm font-normal py-3 text-white"
+                                        >Save Setting</Button
+                                    >
+                                </div>
+                            </div>
+                            <div class="w-full" v-if="activeTab === 1">
+                                <div
+                                    class="flex items-center justify-between mb-2"
+                                >
+                                    <h3>Footer</h3>
+                                    <button
+                                        class="text-xs bg-primary px-3 py-1.5 rounded text-white"
+                                        @click="openModal"
+                                    >
+                                        Add New
+                                    </button>
+                                </div>
+                                <div
+                                    class="relative overflow-x-auto shadow-md sm:rounded-lg border-t-2 border-primary"
+                                >
+                                    <table
+                                        class="w-full text-sm text-left rtl:text-right"
+                                    >
+                                        <thead
+                                            class="text-xs uppercase bg-common"
+                                        >
+                                            <tr>
+                                                <th
+                                                    scope="col"
+                                                    class="px-6 py-3"
+                                                >
+                                                    Column Title
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    class="px-6 py-3"
+                                                >
+                                                    Order Number
+                                                </th>
+                                                <th
+                                                    scope="col"
+                                                    class="px-6 py-3"
+                                                >
+                                                    Action
+                                                </th>
+                                                {{}}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr
+                                                v-for="footer in footer_columns?.data"
+                                                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                                            >
+                                                <td class="px-6 py-4">
+                                                    {{ footer.title }}
+                                                </td>
+                                                <th class="px-6 py-4">
+                                                    {{ footer.order_number }}
+                                                </th>
+                                                <td class="px-6 py-4">
+                                                    <div
+                                                        class="flex items-center gap-2"
+                                                    >
+                                                        <button
+                                                            @click="
+                                                                onFooterDelete(
+                                                                    footer?.id
+                                                                )
+                                                            "
+                                                            class="flex items-center gap-1 px-2 py-1 rounded border border-orange-600 bg-orange-500/10 text-orange-600 hover:bg-orange-600 hover:text-white"
+                                                        >
+                                                            <Icon
+                                                                name="material-symbols:delete-outline"
+                                                                class="text-lg"
+                                                            />
+                                                            <span
+                                                                class="text-xs font-normal"
+                                                                >Delete</span
+                                                            >
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="w-full px-2 text-center py-2">
-                <button @click="onSubmit" class="bg-primary text-white py-2 w-1/2">Save Setting</button>
+        </section>
+    </GuestLayout>
+
+    <Modal
+        title="Add New Footer Column"
+        :isOpen="isModalOpened"
+        @modal-close="closeModal"
+    >
+        <div class="flex flex-col gap-2">
+            <div class="w-full">
+                <label for="title" class="text-xs block mb-1"
+                    >Column Title</label
+                >
+                <input
+                    type="text"
+                    class="p-2 rounded border w-full"
+                    v-model="form.title"
+                />
+            </div>
+            <div class="w-full">
+                <label for="title" class="text-xs block mb-1"
+                    >Column Pages</label
+                >
+                <Select
+                    v-if="pages"
+                    label="title"
+                    :options="pages"
+                    :reduce="(item) => item.id"
+                    multiple
+                    v-model="form.pages"
+                >
+                </Select>
+            </div>
+            <div class="full flex space-x-2">
+                <div class="w-1/2">
+                    <label for="title" class="text-xs block mb-1"
+                        >Order Number</label
+                    >
+                    <input
+                        type="text"
+                        class="p-2 rounded border w-full"
+                        v-model="form.order_number"
+                    />
+                </div>
+            </div>
+            <div class="w-full">
+                <label for="title" class="text-xs block mb-1"
+                    >Column Content</label
+                >
+                <div class="editor_data footer-content">
+                    <SummernoteEditor v-model="form.content" />
+                </div>
+            </div>
+            <div class="w-full mt-5">
+                <Button
+                    @click="onFooterSubmit"
+                    class="w-full mx-auto bg-primary text-sm font-normal py-3 text-white"
+                    >Save Footer Column</Button
+                >
             </div>
         </div>
-    </AppLayout>
+    </Modal>
 </template>

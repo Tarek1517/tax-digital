@@ -16,17 +16,19 @@ class ServiceCategoryController extends Controller
     {
         $categories = ServiceCategory::query()->orderBy('order_level')->paginate(10);
 
-		return ServiceCategoryResource::collection($categories);
+        return ServiceCategoryResource::collection($categories);
     }
 
 
     public function store(ServiceCategoryRequest $request)
     {
-		$data = $request->validated();
-		$data['slug'] = Str::slug($data['name']);
-
-		$category = ServiceCategory::query()->create($data);
-		return ServiceCategoryResource::make($category);
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['name']);
+        if ($request->hasFile('image')) {
+            $data['image'] = '/storage/' . $request->file('image')->store('uploads', 'public');
+        }
+        $category = ServiceCategory::query()->create($data);
+        return ServiceCategoryResource::make($category);
     }
 
     /**
@@ -36,7 +38,7 @@ class ServiceCategoryController extends Controller
     {
         $category = ServiceCategory::query()->findOrFail($id);
 
-		return ServiceCategoryResource::make($category);
+        return ServiceCategoryResource::make($category);
     }
 
     /**
@@ -45,12 +47,16 @@ class ServiceCategoryController extends Controller
     public function update(ServiceCategoryRequest $request, string $id)
     {
         $data = $request->validated();
-		$data['slug'] = Str::slug($data['title']);
+        $data['slug'] = Str::slug($data['title']);
 
-		$category = ServiceCategory::query()->findOrFail($id);
-		$category->update($data);
+        $category = ServiceCategory::query()->findOrFail($id);
+        
+        if ($request->hasFile('image')) {
+            $data['image'] = '/storage/' . $request->file('image')->store('uploads', 'public');
+        }
+        $category->update($data);
 
-		return ServiceCategoryResource::make($category);
+        return ServiceCategoryResource::make($category);
     }
 
     /**
@@ -59,8 +65,8 @@ class ServiceCategoryController extends Controller
     public function destroy(string $id)
     {
         $category = ServiceCategory::query()->findOrFail($id);
-		$category->delete();
+        $category->delete();
 
-		return Response::HTTP_OK;
+        return Response::HTTP_OK;
     }
 }

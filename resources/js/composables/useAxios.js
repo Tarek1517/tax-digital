@@ -1,9 +1,8 @@
-import { ref } from 'vue';
-import axios from 'axios';
-import { toast } from 'vue3-toastify';
+import { ref } from "vue";
+import axios from "axios";
+import { toast } from "vue3-toastify";
 
-
-const axiosInstance  = axios.create({
+const axiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
     withCredentials: true,
     xsrfHeaderName: "X-XSRF-TOKEN",
@@ -14,23 +13,33 @@ export default function useAxios() {
     const error = ref(null);
 
     const sendRequest = async (config) => {
-        const { useAuthStore } = await import('@/stores/useAuthStore');
+        const { useAuthStore } = await import("@/stores/useAuthStore");
         const authStore = useAuthStore();
         if (authStore?.user) {
             config.headers = {
-                'Authorization': `Bearer ${authStore?.user?.token}`,
-                 'Content-Type': 'multipart/form-data'
-            }
+                Authorization: `Bearer ${authStore?.user?.token}`,
+                "Content-Type": "multipart/form-data",
+            };
+        }
+        if (authStore?.admin) {
+            config.headers = {
+                Authorization: `Bearer ${authStore?.admin?.token}`,
+                "Content-Type": "multipart/form-data",
+            };
         }
         loading.value = true;
         error.value = null;
         try {
             const response = await axiosInstance(config);
             return response;
-        } catch (err) { 
-            error.value = err.response ? err.response.data : err.message;
-            if(error.value){
-                toast.error(error.value.message, {autoClose: 1000, 'theme' : 'dark'});
+        } catch (err) {
+            error.value = err.response;
+            if (error.value) {
+                error.value = err.response ? err.response.data : err.message;
+                toast.error(error.value.message || "An error occurred", {
+                    autoClose: 2000,
+                    theme: "dark",
+                });
             }
         } finally {
             loading.value = false;

@@ -15,7 +15,7 @@ class ServiceController extends Controller
 
     public function index()
     {
-       $service = Service::query()->get();
+       $service = Service::query()->with('serviceCat')->get();
        return ServiceResource::collection($service);
     }
 
@@ -33,7 +33,9 @@ class ServiceController extends Controller
 
     public function show(string $id)
     {
-        //
+        $service = Service::query()->with('serviceCat')->findOrFail($id);
+
+		return ServiceResource::make($service);
     }
 
     public function update(ServiceRequest $request, string $id)
@@ -41,6 +43,9 @@ class ServiceController extends Controller
         $service = Service::query()->findOrFail($id);
         $data = $request->validated();
         $data['slug'] = Str::slug($data['title']);
+        if($request->hasFile('image')){
+			$data['image'] = '/storage/'.$request->file('image')->store('uploads', 'public');
+		}
         $service->update($data);
 
         return ServiceResource::make($service);
