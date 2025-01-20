@@ -55,7 +55,7 @@ const checkOtp = async() => {
         data: form.value,
     });
     if(response?.data){
-        router.push({ name: 'updatePAssword', query: { email: form.value.email } });
+        router.push({ name: 'updatePassword', query: { email: form.value.email } });
     }
 }
 </script>

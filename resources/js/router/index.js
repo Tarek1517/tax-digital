@@ -22,8 +22,8 @@ const router = createRouter({
         },
         {
             path: "/update-password",
-            name: "updatePAssword",
-            component: () => import("@/views/Auth/UpdatePAssword.vue"),
+            name: "updatePassword",
+            component: () => import("@/views/Auth/UpdatePassword.vue"),
         },
         {
             path: "/login",
