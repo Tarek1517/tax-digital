@@ -1,8 +1,14 @@
 <script setup>
+import { ref, onMounted } from "vue";
 import { useAuthStore } from "@/stores/useAuthStore.js";
 import useAxios from "@/composables/useAxios.js";
 const { loading, error, sendRequest } = useAxios();
 const authStore = useAuthStore();
+const isCmsLinks = ref(false);
+
+const toggleCmsLinks = () => {
+    isCmsLinks.value = !isCmsLinks.value;
+};
 </script>
 
 <template>
@@ -100,6 +106,71 @@ const authStore = useAuthStore();
                         />
                         <p class="font-normal text-sm">Clients Mail</p>
                     </RouterLink>
+                </li>
+
+                <li>
+                    <!-- CMS Dropdown Toggle -->
+                    <div
+                        class="px-3 py-2 hover:bg-primary/10 group flex items-center gap-3 rounded-lg transition-all ease-in-out duration-300 cursor-pointer relative"
+                        @click="toggleCmsLinks"
+                    >
+                        <Icon
+                            name="carbon:ibm-data-product-exchange"
+                            size="20"
+                            class="text-primary"
+                        />
+                        <span
+                            class="text-sm font-normal transition-all ease-in-out duration-300"
+                        >
+                            CMS
+                        </span>
+                        <div
+                            class="absolute top-1/2 -translate-y-1/2 right-2 transition-all ease-in-out duration-300"
+                            :class="{ 'rotate-90': isCmsLinks }"
+                        >
+                            <Icon
+                                name="ic:twotone-keyboard-arrow-right"
+                                size="20"
+                                class="transition-all ease-in-out duration-300"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Dropdown Menu -->
+                    <div
+                        class="overflow-hidden transition-all duration-300"
+                        :style="{ height: isCmsLinks ? 'auto' : '0px' }"
+                    >
+                        <ul
+                            class="shop-links flex flex-col gap-4 pl-8 py-2"
+                            :class="{ 'shop-links--active': isCmsLinks }"
+                        >
+                            <li>
+                                <RouterLink
+                                    to="/admin/home-slider"
+                                    class="flex items-center"
+                                >
+                                    <Icon
+                                        name="ph:dot-outline-bold"
+                                        class="text-xl text-common"
+                                    />
+                                    <span class="text-sm">Home Hero Section</span>
+                                </RouterLink>
+                            </li>
+                            <li>
+                                <RouterLink
+                                    to="/admin/about-hero-section"
+                                    class="flex items-center"
+                                >
+                                    <Icon
+                                        name="ph:dot-outline-bold"
+                                        class="text-xl text-common"
+                                    />
+                                    <span class="text-sm">About Hero Section</span>
+                                </RouterLink>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 <li>
                     <RouterLink

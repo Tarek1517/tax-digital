@@ -36,6 +36,7 @@ class SettingController extends Controller
             'linkedin_link' => getSetting('linkedin_link'),
             'Skype_link' => getSetting('Skype_link'),
             'twitter_link' => getSetting('twitter_link'),
+            'homePage_video_link' => getSetting('homePage_video_link'),
         ];
 
         return response()->json($settings);

@@ -36,6 +36,11 @@ const router = createRouter({
             component: () => import("@/views/Service/Index.vue"),
         },
         {
+            path: "/service-details/:slug",
+            name: "ServiceDetails",
+            component: () => import("@/views/Service/show.vue"),
+        },
+        {
             path: "/order-success",
             name: "success",
             component: () => import("@/views/CheckOut/Success.vue"),
@@ -191,6 +196,50 @@ const router = createRouter({
             name: "custom-page",
             component: () => import("@/views/CutomPage/Index.vue"),
         },
+
+        //CMS Section
+        {
+            path: "/admin/home-slider",
+            name: "AdminHomeSlider",
+            component: () => import("@/views/Dashboard/CMS/Index.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/create-heroSection",
+            name: "CreateheroSection",
+            component: () => import("@/views/Dashboard/CMS/Create.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/edit-heroSection/:id",
+            name: "EditheroSection",
+            component: () => import("@/views/Dashboard/CMS/Edit.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/about-hero-section",
+            name: "AdminAboutHeroSection",
+            component: () => import("@/views/Dashboard/About/Index.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/create-about-hero",
+            name: "CreateAboutHeroSection",
+            component: () => import("@/views/Dashboard/About/Create.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/edit-aboutHeroSection/:id",
+            name: "EditheroSection",
+            component: () => import("@/views/Dashboard/About/Edit.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
     ],
 });
 

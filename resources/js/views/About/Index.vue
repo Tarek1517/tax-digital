@@ -1,6 +1,27 @@
 <script setup>
-
 import Container from '@/components/Container.vue'
+import AppLayout from "@/components/AppLayout.vue";
+import { ref, onMounted } from "vue";
+import useAxios from "@/composables/useAxios.js";
+
+const { loading, error, sendRequest } = useAxios();
+const allData = ref([]);
+
+const fetchAboutHeroData = async () => {
+    try {
+        const response = await sendRequest({
+            method: "get",
+            url: "frontend/v1/about-hero-section",
+        });
+        allData.value = response?.data?.data || [];
+    } catch (error) {
+        console.error("Error fetching Packages:", error);
+    }
+};
+
+onMounted(() => {
+  fetchAboutHeroData();
+});
 </script>
 
 <template>
@@ -10,18 +31,19 @@ import Container from '@/components/Container.vue'
                 <div class="flex flex-wrap py-10">
                     <div class="w-full lg:w-1/2">
                         <div class="">
-                            <p class="text-sm lg:text-lg text-primary py-3">Company accounts and tax return</p>
-                            <h2 class="text-3xl lg:text-5xl font-bold text-black">Perfect solution for company accounts & tax filing</h2>
+                            <p class="text-sm lg:text-lg text-primary py-3">{{ allData.sub_title }}</p>
+                            <h2 class="text-3xl lg:text-5xl font-bold text-black">{{ allData.title }}</h2>
                         </div>
                     </div>
+                    
                     <div class="w-full lg:w-1/2">
                         <div class=" pt-10 px-8 ">
-                            <p class="border-l-2 border-primary/25 pl-5 text-sm lg:text-lg text-gray-700 py-3">Our team of expert accountants have one simple purpose: to help you file your accounts and tax return. We offer exclusive one-off services for micro and small companies, professional individuals, contractors and freelancers in an aspect of the end-to-end operation to simply take the compliance burden off your shoulder, while you are doing what you are best at.</p>
+                            <p class="border-l-2 border-primary/25 pl-5 text-sm lg:text-lg text-gray-700 py-3">{{ allData.short_description }}</p>
                         </div>
                     </div>
                 </div>
               <div class="rounded-2xl">
-                <img class="rounded-2xl" src="@/assets/images/about.png" alt="">
+                <img class="rounded-2xl" :src="allData?.image" alt="">
               </div>
             </Container>
         </section>

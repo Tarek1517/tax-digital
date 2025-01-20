@@ -31,8 +31,8 @@ class ServiceRequest extends FormRequest
                 ? 'nullable|mimes:png,jpg,jpeg,webp,avif|max:2048'
                 : 'sometimes|nullable|mimes:png,jpg,jpeg,webp,avif|max:2048',
             'icon' => 'nullable|string|max:1000',
-            'short_description' => 'nullable|string|max:500',
-            'description' => 'nullable|string|max:1500',
+            'short_description' => 'nullable|string',
+            'description' => 'nullable|string',
             'order_level' => 'required|integer',
             'status' => 'required'
         ];

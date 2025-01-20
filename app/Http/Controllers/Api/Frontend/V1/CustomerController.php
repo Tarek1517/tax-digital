@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\V1\CustomerMailRequest;
+use Illuminate\Support\Facades\Mail;
+use \App\Mail\CustomQuoteMail;
 
 
 class CustomerController extends Controller
@@ -43,10 +45,18 @@ class CustomerController extends Controller
     public function store(CustomerMailRequest $request)
     {
         $data = $request->validated();
-        $package = CustomerMail::query()->create($data);
+        $Maildatas = CustomerMail::query()->create($data);
 
-        return customerMailResource::make($package);
+        return customerMailResource::make($Maildatas);
 
+    }
+
+    public function storeQuote(CustomerMailRequest $request)
+    {
+        $mailData = $request->validated();
+        $mailDatas = CustomerMail::query()->create($mailData);
+        Mail::to('tarek.hasan041517@gmail.com')->send(new CustomQuoteMail($mailData));
+        return customerMailResource::make($mailDatas);
     }
 
     /**

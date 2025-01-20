@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\V1\OrderController;
 use App\Http\Controllers\Api\V1\DashboardController;
 use App\Http\Controllers\Api\V1\ClientsController;
 use App\Http\Controllers\Api\V1\CustomerMailController;
+use App\Http\Controllers\Api\V1\HomeSliderController;
+use App\Http\Controllers\Api\V1\AboutHeroSectionController;
 use App\Http\Controllers\Api\Frontend\V1\HomeController;
 use App\Http\Controllers\Api\Frontend\V1\CustomerController;
 use App\Http\Controllers\Api\Auth\Customer\CustomerAuthController;
@@ -43,10 +45,16 @@ Route::prefix('v1')->middleware(['auth:sanctum','ability:role-admin'])->group(fu
         'custimer-mail' => CustomerMailController::class,
         'orders' => OrderController::class,
         'clients' => ClientsController::class,
+        'hero-section' => HomeSliderController::class,
+        'about-hero-sections' => AboutHeroSectionController::class,
     ]);
 
     Route::get('/all-page-list', [PagesController::class, 'allPageList']);
     Route::get('/dashboard', DashboardController::class);
+    Route::get('/inactive-status/{id}', [HomeSliderController::class, 'inActiveStatus']);
+    Route::get('/active-status/{id}', [HomeSliderController::class, 'activeStatus']);
+    Route::get('/aboutInactive-status/{id}', [AboutHeroSectionController::class, 'aboutInActiveStatus']);
+    Route::get('/aboutActive-status/{id}', [AboutHeroSectionController::class, 'aboutActiveStatus']);
 });
 
 
@@ -59,8 +67,12 @@ Route::prefix('frontend/v1')->group(function () {
     Route::get('/get-package-data/{slug}', [HomeController::class, 'getPackageData']);
     Route::post('/save-order', [OrderController::class, 'store'])->middleware('auth:sanctum');
     Route::post('/store-mail', [CustomerController::class, 'store']);
+    Route::post('/store-custom-quote', [CustomerController::class, 'storeQuote']);
     Route::get('/get-customer-order', [CustomerController::class, 'index'])->middleware('auth:sanctum');
     Route::apiResource('customer', CustomerController::class)->middleware('auth:sanctum');
+    Route::get('/hero-section', [HomeController::class, 'getHeroData']);
+    Route::get('/about-hero-section', [HomeController::class, 'getAboutHeroData']);
+    Route::get('/get-service-data/{slug}', [HomeController::class, 'getServiceData']);
 });
 
 

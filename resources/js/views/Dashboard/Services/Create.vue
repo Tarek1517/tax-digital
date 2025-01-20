@@ -72,17 +72,17 @@ onMounted(() => {
                 <div class="w-1/2 mb-5 px-2">
                     <div class="flex flex-col gap-1">
                         <label for="title" class="text-sm mb-2"
-                            >Service Name</label
+                            >Service Title</label
                         >
-                        <input type="text" class="input" v-model="form.name" />
+                        <input type="text" class="input" v-model="form.title" />
                     </div>
                 </div>
                 <div class="w-1/2 mb-5 px-2">
                     <div class="flex flex-col gap-1">
                         <label for="title" class="text-sm mb-2"
-                            >Service Title</label
+                            >Service Sub-title</label
                         >
-                        <input type="text" class="input" v-model="form.title" />
+                        <input type="text" class="input" v-model="form.name" />
                     </div>
                 </div>
                 <div class="w-1/2 mb-5 px-2">

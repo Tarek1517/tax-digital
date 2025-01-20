@@ -88,7 +88,7 @@ onMounted(() => {
                         <label for="title" class="text-sm mb-2"
                             >Service Name</label
                         >
-                        <input type="text" class="input" v-model="form.name" />
+                        <input type="text" class="input" v-model="form.title" />
                     </div>
                 </div>
 
@@ -97,7 +97,7 @@ onMounted(() => {
                         <label for="title" class="text-sm mb-2"
                             >Service Title</label
                         >
-                        <input type="text" class="input" v-model="form.title" />
+                        <input type="text" class="input" v-model="form.name" />
                     </div>
                 </div>
                 <div class="w-1/2 mb-5 px-2">

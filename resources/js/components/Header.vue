@@ -1,11 +1,29 @@
 <script setup>
 import { useAuthStore } from "@/stores/useAuthStore";
+import { ref, onMounted } from "vue";
 import useAxios from "@/composables/useAxios.js";
 const { loading, error, sendRequest } = useAxios();
 
 const authStore = useAuthStore();
-</script>
 
+const allSettings = ref([]);
+
+const fetchSettings = async () => {
+    try {
+        const response = await sendRequest({
+            method: "get",
+            url: "frontend/v1/get-all-settings",
+        });
+        allSettings.value = response?.data || [];
+    } catch (error) {
+        console.error("Error fetching Packages:", error);
+    }
+};
+
+onMounted(() => {
+    fetchSettings();
+});
+</script>
 
 <template>
     <header class="bg-white shadow-md">
@@ -48,42 +66,48 @@ const authStore = useAuthStore();
                     >
                 </nav>
 
-                <!-- Right Side (Contact Info & Buttons) -->
                 <div class="flex items-center space-x-4">
-                    <!-- Buy Now Dropdown -->
-                    <div class="relative">
-                        <RouterLink
-                            to="/dashboard"
-                            v-if="authStore?.user"
-                            class="flex items-center gap-1 group"
+                    <!-- Phone Number (Clickable) -->
+                    <div class="flex items-center">
+                        <Icon
+                            name="line-md:phone-call-loop"
+                            class="text-primary mr-2 text-2xl"
+                        />
+                        <a
+                            :href="`tel:${allSettings.phone_number}`"
+                            class="text-black font-medium hover:text-primary transition-all duration-300"
                         >
-                            <!-- Icon with hover effect -->
-                            <Icon
-                                name="lucide:user-round"
-                                class="text-3xl text-white bg-primary p-1 rounded-md group-hover:bg-secondary group-hover:text-black transition-all duration-300"
-                                :style="{ color: 'white' }"
-                            />
-                            <!-- Text with hover effect -->
-                            <span
-                                class="hidden lg:block font-bold text-black group-hover:text-secondary transition-all duration-300"
-                            >
-                                {{ authStore?.user?.user?.name }}
-                            </span>
-                        </RouterLink>
-
-                        <!-- If user is not authenticated -->
-                        <RouterLink
-                            v-else
-                            to="/login"
-                            class="px-4 py-2 font-medium bg-primary rounded-lg hover:bg-secondary flex items-center"
-                            :style="{ color: 'white' }"
-                        >
-                            <span>Login</span>
-                        </RouterLink>
-
-                        <!-- Dropdown Menu (Hidden by default, shown on click) -->
-                        <!-- Add dropdown functionality here -->
+                            {{ allSettings.phone_number }}
+                        </a>
                     </div>
+
+                    <!-- Authenticated User Section -->
+                    <RouterLink
+                        v-if="authStore?.user"
+                        to="/dashboard"
+                        class="flex items-center gap-2 group"
+                    >
+                        <!-- User Icon with hover effect -->
+                        <Icon
+                            name="lucide:user-round"
+                            class="text-3xl text-white bg-primary p-1 rounded-md group-hover:bg-secondary group-hover:text-black transition-all duration-300"
+                        />
+                        <!-- User Name -->
+                        <span
+                            class="hidden lg:block font-bold text-black group-hover:text-secondary transition-all duration-300"
+                        >
+                            {{ authStore?.user?.user?.name }}
+                        </span>
+                    </RouterLink>
+
+                    <!-- Login Button (if not authenticated) -->
+                    <RouterLink
+                        v-else
+                        to="/login"
+                        class="bg-primary text-sm lg:text-base uppercase text-white py-1 lg:py-2 px-5 lg:px-8 rounded-full hover:bg-secondary transition-all ease-in-out duration-300"
+                    >
+                        <span>Login</span>
+                    </RouterLink>
                 </div>
             </div>
         </Container>

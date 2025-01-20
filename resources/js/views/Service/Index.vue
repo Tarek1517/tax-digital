@@ -77,15 +77,19 @@ onMounted(() => {
                                 :key="service.id"
                                 class="flex flex-col gap-2 lg:gap-4"
                             >
-                                <li class="flex gap-3 items-center mb-3">
-                                    <Icon
-                                        :name="service?.icon"
-                                        class="text-2xl text-violet-700"
-                                    />
-                                    <p class="text-sm lg:text-lg text-gray-700">
-                                        {{ service.name }}
-                                    </p>
-                                </li>
+                                <RouterLink :to="`/service-details/${service?.slug}`">
+                                    <li class="flex gap-3 items-center mb-3">
+                                        <Icon
+                                            :name="service?.icon"
+                                            class="text-2xl text-primary"
+                                        />
+                                        <p
+                                            class="text-sm lg:text-lg text-gray-700 hover:text-secondary"
+                                        >
+                                            {{ service.name }}
+                                        </p>
+                                    </li>
+                                </RouterLink>
                             </ul>
                         </div>
                     </div>

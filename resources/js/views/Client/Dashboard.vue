@@ -201,8 +201,15 @@ onMounted(async () => {
                                     <p class="text-sm text-gray-800">
                                         <span class="font-bold text-black">Price:</span> {{ order?.total_payment }}
                                     </p>
-                                    <span class="text-sm text-gray-800"
-                                        ><span class="font-bold text-black">Payment Method:</span> {{ order?.payment_method }}</span
+                                    <p class="text-sm text-gray-800"
+                                        ><span class="font-bold text-black">Payment Method:</span> {{ order?.payment_method }}</p
+                                    >
+                                    <p class="text-sm text-gray-800"
+                                        ><span class="font-bold text-black">Status:</span><span class="px-2 py-1 rounded-lg" :class="
+                                        order?.order_status === 'accept'
+                                            ? 'bg-green-100 text-green-700'
+                                            : 'bg-yellow-100 text-yellow-700'
+                                    ">{{ order?.order_status }}</span></p
                                     >
                                 </div>
                             </div>

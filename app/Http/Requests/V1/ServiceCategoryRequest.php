@@ -29,7 +29,7 @@ class ServiceCategoryRequest extends FormRequest
             'image' => $this->isMethod('post')
                 ? 'nullable|mimes:png,jpg,jpeg,webp,avif|max:2048'
                 : 'sometimes|nullable|mimes:png,jpg,jpeg,webp,avif|max:2048',
-            'short_description' => 'nullable|string|max:1000',
+            'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'order_level' => 'nullable',
             'status' => 'required'

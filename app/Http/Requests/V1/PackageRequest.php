@@ -26,7 +26,7 @@ class PackageRequest extends FormRequest
             'price' => 'required|numeric',
             'slug' => 'nullable|string',
             'image' => 'nullable|image|mimes:png,jpg,jpeg,webp,avif|max:2048',
-            'description' => 'nullable|string|max:255',
+            'description' => 'nullable|string',
             'order_level' => 'required|integer',
             'status' => 'required',
         ];

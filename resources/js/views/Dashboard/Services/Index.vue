@@ -62,7 +62,7 @@ onMounted(() => {
 								Icon
 							</th>
 							<th scope="col" class="px-6 py-3">
-								Name
+								Sub Title
 							</th>
 							<th scope="col" class="px-6 py-3">
 								Category

@@ -22,6 +22,7 @@ const getAllSetting = async () => {
     setting.value.youtube_link = response.data.youtube_link;
     setting.value.linkedin_link = response.data.linkedin_link;
     setting.value.twitter_link = response.data.twitter_link;
+    setting.value.homePage_video_link = response.data.homePage_video_link;
 };
 
 // get Page
@@ -50,6 +51,7 @@ const setting = ref({
     youtube_link: null,
     instagram_link: null,
     linkedin_link: null,
+    homePage_video_link: null,
 });
 
 const onSubmit = async () => {
@@ -261,6 +263,18 @@ onMounted(() => {
                                         class="p-2 rounded-md w-full"
                                     />
                                 </div>
+                                <div class="w-1/2 px-2 mb-2">
+                                    <label
+                                        for="app-url"
+                                        class="text-xs mb-1 block"
+                                        >Home Page Video Link</label
+                                    >
+                                    <input
+                                        v-model="setting.homePage_video_link"
+                                        type="text"
+                                        class="p-2 rounded-md w-full"
+                                    />
+                                </div>
 
                                 <div class="w-1/2 px-2 mb-2">
                                     <label
@@ -335,7 +349,7 @@ onMounted(() => {
                                                 >
                                                     Action
                                                 </th>
-                                                {{}}
+                                               
                                             </tr>
                                         </thead>
                                         <tbody>
