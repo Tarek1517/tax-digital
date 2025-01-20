@@ -11,6 +11,21 @@ const router = createRouter({
             component: () => import("@/views/Index.vue"),
         },
         {
+            path: "/forget-password",
+            name: "ForgetPassword",
+            component: () => import("@/views/Auth/ForgetPassword.vue"),
+        },
+        {
+            path: "/verify-OTP",
+            name: "verifyOTP",
+            component: () => import("@/views/Auth/VerifyOTP.vue"),
+        },
+        {
+            path: "/update-password",
+            name: "updatePAssword",
+            component: () => import("@/views/Auth/UpdatePAssword.vue"),
+        },
+        {
             path: "/login",
             name: "login",
             component: () => import("@/views/Auth/Login.vue"),
@@ -191,6 +206,50 @@ const router = createRouter({
             name: "custom-page",
             component: () => import("@/views/CutomPage/Index.vue"),
         },
+
+        //CMS Section
+        {
+            path: "/admin/home-slider",
+            name: "AdminHomeSlider",
+            component: () => import("@/views/Dashboard/CMS/Index.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/create-heroSection",
+            name: "CreateheroSection",
+            component: () => import("@/views/Dashboard/CMS/Create.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/edit-heroSection/:id",
+            name: "EditheroSection",
+            component: () => import("@/views/Dashboard/CMS/Edit.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/about-hero-section",
+            name: "AdminAboutHeroSection",
+            component: () => import("@/views/Dashboard/About/Index.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/create-about-hero",
+            name: "CreateAboutHeroSection",
+            component: () => import("@/views/Dashboard/About/Create.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
+        {
+            path: "/admin/edit-aboutHeroSection/:id",
+            name: "EditheroSection",
+            component: () => import("@/views/Dashboard/About/Edit.vue"),
+            beforeEnter: adminMiddleware,
+        },
+
     ],
 });
 

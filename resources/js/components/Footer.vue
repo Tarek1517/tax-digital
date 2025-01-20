@@ -31,19 +31,31 @@ onMounted(() => {
                 <div class="flex flex-wrap py-8 justify-between">
                     <div class="w-full lg:w-1/5">
                         <div
-                            class="flex lg:flex-col items-center lg:items-start justify-center gap-4 border-b-2 border-primary/35 lg:border-none"
+                            class="flex lg:flex-col items-center lg:items-start justify-center border-b-2 border-primary/35 lg:border-none"
                         >
                             <div
-                                class="w-20 h-20 bg-primary mb-8 rounded-full flex items-center justify-center"
+                                class="w-20 h-20"
                             >
-                                <div
-                                    class="w-10 h-10 bg-white rounded-full"
-                                ></div>
+                                <RouterLink to="/">
+                                    <img
+                                        class="h-10 w-auto"
+                                        src="@/assets/images/tax-logo.png"
+                                        alt=""
+                                    />
+                                </RouterLink>
                             </div>
-                            <h4
-                                class="text-2xl lg:text-4xl font-bold text-black lg:pt-9"
+                            <p
+                                class="text-sm lg:text-sm text-gray-700"
                             >
-                                Say hello!..
+                                Once you approve the accounts, we submit your
+                                company accounts & tax return to the authorities
+                                and share the proof of submission for your
+                                record.
+                            </p>
+                            <h4
+                                class="text-2xl lg:text-4xl font-bold text-black lg:pt-5"
+                            >
+                                Tax Digital
                             </h4>
                         </div>
                     </div>

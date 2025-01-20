@@ -7,14 +7,18 @@ use Illuminate\Http\Request;
 use App\Http\Resources\V1\ServiceResource;
 use App\Http\Resources\V1\PackageResource;
 use App\Http\Resources\V1\PageResource;
+use App\Http\Resources\V1\HomeSliderResource;
 use App\Models\ServiceCategory;
 use App\Models\Package;
 use App\Models\Footer;
 use App\Models\Page;
+use App\Models\HomeSlider;
 
 
 class HomeController extends Controller
 {
+
+
     public function getCategories()
     {
         $category = ServiceCategory::query()->with('services')->get();
@@ -25,6 +29,12 @@ class HomeController extends Controller
     {
         $Package = Package::query()->get();
         return PackageResource::collection($Package);
+    }
+
+    public function getHeroData()
+    {
+        $heroData = HomeSlider::where('status', '1')->first();
+        return HomeSliderResource::make($heroData);
     }
 
 
@@ -56,6 +66,7 @@ class HomeController extends Controller
             'linkedin_link' => getSetting('linkedin_link'),
             'Skype_link' => getSetting('Skype_link'),
             'twitter_link' => getSetting('twitter_link'),
+            'homePage_video_link' => getSetting('homePage_video_link'),
         ];
 
         return response()->json($settings);

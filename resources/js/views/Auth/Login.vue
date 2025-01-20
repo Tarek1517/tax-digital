@@ -30,7 +30,11 @@
                             class="bg-transparent block w-full rounded-md p-2 shadow-sm border border-primary focus:outline-none placeholder:text-gray-400 px-3 mb-2"
                         />
                     </div>
-
+                    <p>
+                        <RouterLink to="/forget-password" class="text-primary hover:text-secondary"
+                            >Forget Password?</RouterLink
+                        >
+                    </p>
                     <div class="text-center py-5">
                         <button
                             @click="handleLogin"

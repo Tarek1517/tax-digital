@@ -31,19 +31,7 @@ const request = ref(null);
 //     }
 // }
 
-const deleteRequest = async (id) => {
-    const response = sendRequest({
-        method: "get",
-        url: `/v1/delete-inquiry/${id}`,
-    });
-    if (response) {
-        // getRequest();
-        toast.success("Request Deleted Successfully", {
-            autoClose: 500,
-            theme: "dark",
-        });
-    }
-};
+
 
 onMounted(() => {
     getData();

@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\User;
 use App\Http\Requests\V1\OrderRequest;
 use App\Http\Resources\V1\OrderResource;
 use Stripe\Stripe;
 use Stripe\PaymentIntent;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OrderConfirmMail;
 
 class OrderController extends Controller
 {
@@ -65,6 +68,9 @@ class OrderController extends Controller
             ]));
 
             DB::commit();
+
+            $user = User::where('id', $request->user_id)->first();
+            Mail::to($user->email)->send(new OrderConfirmMail($user->name, $request->package_name));
 
             return response()->json(['url' => $session->url], 200);
 
