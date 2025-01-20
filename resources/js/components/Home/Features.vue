@@ -4,7 +4,6 @@
             <div class="flex flex-wrap">
                 <!-- Left Side: YouTube Video -->
                 <div class="w-full lg:w-1/2 mb-5 lg:mb-0">
-
                     <iframe
                         v-if="dynamicVideoLink"
                         :src="dynamicVideoLink"
@@ -38,10 +37,10 @@
                             <div
                                 class="w-10 min-w-10 h-10 grid place-content-center bg-secondary border rounded-full"
                             >
-                                <i
-                                    class="fa fa-share-alt text-primary text-lg"
-                                    aria-hidden="true"
-                                ></i>
+                                <Icon
+                                    name="gg:digitalocean"
+                                    class="fa fa-share-alt text-white text-lg"
+                                />
                             </div>
                             <p class="text-gray-900 text-[17px] font-medium">
                                 Digital Information Sharing
@@ -53,12 +52,12 @@
                             class="flex items-center space-x-3 shadow-lg bg-opacity-50 bg-green-100 p-4 py-3 rounded-lg"
                         >
                             <div
-                                class="w-10 h-10 grid place-content-center bg-white border rounded-full"
+                                class="w-10 h-10 grid place-content-center bg-primary border rounded-full"
                             >
-                                <i
-                                    class="fa fa-calendar text-primary text-lg"
-                                    aria-hidden="true"
-                                ></i>
+                                <Icon
+                                    name="line-md:moon-alt-to-sunny-outline-loop-transition"
+                                    class="fa fa-share-alt text-white text-lg"
+                                />
                             </div>
                             <p class="text-gray-900 text-[17px] font-medium">
                                 3 to 5 Days Turnaround
@@ -72,10 +71,10 @@
                             <div
                                 class="w-10 min-w-10 h-10 grid place-content-center bg-secondary border rounded-full"
                             >
-                                <i
-                                    class="fa fa-user text-primary text-lg"
-                                    aria-hidden="true"
-                                ></i>
+                                <Icon
+                                    name="material-symbols:account-balance-rounded"
+                                    class="fa fa-share-alt text-white text-lg"
+                                />
                             </div>
                             <p class="text-gray-900 text-[17px] font-medium">
                                 Dedicated Account Manager
@@ -87,12 +86,13 @@
                             class="flex items-center space-x-3 shadow-lg bg-opacity-50 bg-green-100 p-4 py-3 rounded-lg"
                         >
                             <div
-                                class="w-10 h-10 grid place-content-center bg-white border rounded-full"
+                                class="w-10 h-10 grid place-content-center bg-primary border rounded-full"
                             >
-                                <i
-                                    class="fa fa-file-text text-primary text-lg"
-                                    aria-hidden="true"
-                                ></i>
+                                
+                                <Icon
+                                    name="material-symbols:calendar-month-sharp"
+                                    class="fa fa-share-alt text-white text-lg"
+                                />
                             </div>
                             <p class="text-gray-900 text-[17px] font-medium">
                                 No Monthly Contracts

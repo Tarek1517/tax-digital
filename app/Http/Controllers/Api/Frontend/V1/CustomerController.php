@@ -23,9 +23,10 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
-        $orders = Order::query()->where('user_id', Auth::user()->id)->with('packages')->get();
+
+        $orders = Order::query()->where('user_id', $id)->with('packages')->get();
 
         return OrderListResource::collection($orders);
     }

@@ -473,7 +473,7 @@ onMounted(() => {
                 <div class="text-center mt-9">
                     <RouterLink
                         to="/price"
-                        class="bg-primary text-base lg:text-xl uppercase text-white py-1 lg:py-3 px-8 lg:px-20 rounded-full hover:bg-secondary transition-all ease-in-out duration-300"
+                        class="bg-secondary text-lg lg:text-2xl text-white py-1 lg:py-3 px-10 lg:mb-8 rounded-full hover:bg-primary transition-all ease-in-out duration-500"
                     >
                         Buy Now
                     </RouterLink>

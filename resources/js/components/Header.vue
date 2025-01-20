@@ -104,7 +104,7 @@ onMounted(() => {
                     <RouterLink
                         v-else
                         to="/login"
-                        class="bg-primary text-sm lg:text-base uppercase text-white py-1 lg:py-2 px-5 lg:px-8 rounded-full hover:bg-secondary transition-all ease-in-out duration-300"
+                        class="bg-secondary text-sm lg:text-base uppercase text-white py-1 lg:py-2 px-5 lg:px-8 rounded-full hover:bg-primary transition-all ease-in-out duration-300"
                     >
                         <span>Login</span>
                     </RouterLink>

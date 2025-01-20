@@ -13,7 +13,10 @@
                     </p>
                     <a
                         :href="allData?.button_link"
-                        class="bg-primary text-base lg:text-xl uppercase text-white py-1 lg:py-3 px-8 lg:px-20 rounded-full hover:bg-secondary transition-all ease-in-out duration-300"
+
+
+                        class="bg-secondary text-base lg:text-xl uppercase text-white py-1 lg:py-3 px-8 lg:px-20 rounded-full hover:bg-primary transition-all ease-in-out duration-300"
+
                     >
                         Buy Now
                     </a>

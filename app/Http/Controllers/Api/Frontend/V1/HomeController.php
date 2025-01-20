@@ -15,8 +15,8 @@ use App\Models\Service;
 use App\Models\Footer;
 use App\Models\Page;
 use App\Models\HomeSlider;
-use App\Models\AboutHeroSection;
 
+use App\Models\AboutHeroSection;
 
 class HomeController extends Controller
 {
@@ -45,7 +45,6 @@ class HomeController extends Controller
         $AboutHeroData = AboutHeroSection::where('status', '1')->first();
         return AboutHeroSectionResource::make($AboutHeroData);
     }
-
 
     public function getCustomPage($slug)
     {

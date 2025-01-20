@@ -37,6 +37,7 @@ const handeleinActive = async (id) => {
     const response = await sendRequest({
         method: "get",
         url: `/v1/aboutInactive-status/${id}`,
+
     });
     if (response) {
         await getaboutHeroContent();

@@ -54,6 +54,8 @@ const onSubmit = async () => {
                 massage: "",
             };
 
+            closeModal();
+
             setTimeout(() => {
                 router.push("/contact");
             }, 2000);

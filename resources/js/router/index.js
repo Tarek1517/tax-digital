@@ -11,6 +11,21 @@ const router = createRouter({
             component: () => import("@/views/Index.vue"),
         },
         {
+            path: "/forget-password",
+            name: "ForgetPassword",
+            component: () => import("@/views/Auth/ForgetPassword.vue"),
+        },
+        {
+            path: "/verify-OTP",
+            name: "verifyOTP",
+            component: () => import("@/views/Auth/VerifyOTP.vue"),
+        },
+        {
+            path: "/update-password",
+            name: "updatePassword",
+            component: () => import("@/views/Auth/UpdatePassword.vue"),
+        },
+        {
             path: "/login",
             name: "login",
             component: () => import("@/views/Auth/Login.vue"),

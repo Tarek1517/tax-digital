@@ -34,7 +34,7 @@ Route::get('/all-category-list', function () {
 });
 
 //dashboard route
-Route::prefix('v1')->middleware(['auth:sanctum','ability:role-admin'])->group(function () {
+Route::prefix('v1')->middleware(['auth:sanctum', 'ability:role-admin'])->group(function () {
     Route::apiResources([
         'service-category' => ServiceCategoryController::class,
         'service' => ServiceController::class,
@@ -55,6 +55,8 @@ Route::prefix('v1')->middleware(['auth:sanctum','ability:role-admin'])->group(fu
     Route::get('/active-status/{id}', [HomeSliderController::class, 'activeStatus']);
     Route::get('/aboutInactive-status/{id}', [AboutHeroSectionController::class, 'aboutInActiveStatus']);
     Route::get('/aboutActive-status/{id}', [AboutHeroSectionController::class, 'aboutActiveStatus']);
+    Route::get('/inactive-status/{id}', [AboutHeroSectionController::class, 'inActiveStatus']);
+    Route::get('/active-status/{id}', [AboutHeroSectionController::class, 'activeStatus']);
 });
 
 
@@ -73,6 +75,11 @@ Route::prefix('frontend/v1')->group(function () {
     Route::get('/hero-section', [HomeController::class, 'getHeroData']);
     Route::get('/about-hero-section', [HomeController::class, 'getAboutHeroData']);
     Route::get('/get-service-data/{slug}', [HomeController::class, 'getServiceData']);
+    Route::get('/get-customer-order/{id}', [CustomerController::class, 'index'])->middleware('auth:sanctum');
+    Route::apiResource('customer', CustomerController::class)->middleware('auth:sanctum');
+    Route::get('/hero-section', [HomeController::class, 'getHeroData']);
+
+
 });
 
 
@@ -80,7 +87,8 @@ Route::prefix('frontend/v1')->group(function () {
 Route::post('/customer/login', [CustomerAuthController::class, 'login']);
 Route::post('/customer/register', [CustomerAuthController::class, 'register']);
 Route::post('/admin/login', [AdminAuthController::class, 'login']);
-
-
+Route::post('/customer/send-otp', [CustomerAuthController::class, 'sendOtp']);
+Route::post('/customer/check-otp', [CustomerAuthController::class, 'checkOtp']);
+Route::post('/customer/reset-password', [CustomerAuthController::class, 'resetPassword']);
 
 Route::get('/storage', fn() => \Illuminate\Support\Facades\Artisan::call('storage:link'));

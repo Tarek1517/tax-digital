@@ -60,11 +60,11 @@ const form = ref({
 
 const allOrders = ref([]);
 
-const fetchOrders = async () => {
+const fetchOrders = async (id) => {
     try {
         const response = await sendRequest({
             method: "get",
-            url: "frontend/v1/get-customer-order",
+            url: `/frontend/v1/get-customer-order/${id}`,
         });
         allOrders.value = response?.data || [];
     } catch (error) {
@@ -96,7 +96,7 @@ const onSubmit = async (id) => {
 onMounted(async () => {
     window.scrollTo(0, 0);
     await getCustomer();
-    await fetchOrders();
+    await fetchOrders(customer.value.id);
 });
 </script>
 <template>

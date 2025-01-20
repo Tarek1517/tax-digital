@@ -88,7 +88,9 @@ class AboutHeroSectionController extends Controller
         return Response::HTTP_OK;
     }
 
+
     public function aboutInActiveStatus($id)
+
     {
         AboutHeroSection::where('id', $id)->update(['status' => '0']);
         $heroSection = AboutHeroSection::find($id); // Retrieve the updated model
@@ -96,7 +98,9 @@ class AboutHeroSectionController extends Controller
         return AboutHeroSectionResource::make($heroSection);
     }
 
+
     public function aboutActiveStatus($id)
+
     {
         AboutHeroSection::where('status', '1')->update(['status' => '0']);
         AboutHeroSection::where('id', $id)->update(['status' => '1']);
